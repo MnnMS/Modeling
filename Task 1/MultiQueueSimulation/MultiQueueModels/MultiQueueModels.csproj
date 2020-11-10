@@ -46,6 +46,7 @@
     <Compile Include="Server.cs" />
     <Compile Include="SimulationCase.cs" />
     <Compile Include="SimulationSystem.cs" />
+    <Compile Include="SystemHelper.cs" />
     <Compile Include="TimeDistribution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
