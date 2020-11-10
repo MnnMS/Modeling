@@ -360,3 +360,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+Task 1/MultiQueueSimulation/.vs/MultiQueueSimulation/v16/.suo
+Task 1/MultiQueueSimulation/.vs/MultiQueueSimulation/v16/Server/sqlite3/storage.ide
+Task 1/MultiQueueSimulation/MultiQueueSimulation/obj/Debug/MultiQueueSimulation.csprojAssemblyReference.cache
+*.cache
+Task 1/MultiQueueSimulation/MultiQueueSimulation/obj/Debug/MultiQueueSimulation.csprojAssemblyReference.cache
