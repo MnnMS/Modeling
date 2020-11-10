@@ -15,6 +15,16 @@ namespace MultiQueueModels
             this.PerformanceMeasures = new PerformanceMeasures();
             this.SimulationTable = new List<SimulationCase>();
         }
+
+        public SimulationSystem(int nServers, int stoppingN, List<Server> servers, List<TimeDistribution> dist, Enums.StoppingCriteria stopping, Enums.SelectionMethod selection)
+        {
+            this.NumberOfServers = nServers;
+            this.StoppingNumber = stoppingN;
+            this.Servers = servers;
+            this.InterarrivalDistribution = dist;
+            this.StoppingCriteria = stopping;
+            this.SelectionMethod = selection;
+        }
         
         ///////////// INPUTS ///////////// 
         public int NumberOfServers { get; set; }

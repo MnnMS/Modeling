@@ -97,3 +97,15 @@ C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQ
 C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CopyComplete
 C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.pdb
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.dll
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.pdb
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csprojAssemblyReference.cache
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form1.resources
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Properties.Resources.resources
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.GenerateResource.cache
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CopyComplete
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb

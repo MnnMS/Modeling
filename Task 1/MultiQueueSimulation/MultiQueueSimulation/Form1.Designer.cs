@@ -120,6 +120,7 @@
             // 
             // inputGridView
             // 
+            this.inputGridView.AllowUserToOrderColumns = true;
             this.inputGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inputGridView.Location = new System.Drawing.Point(15, 180);
             this.inputGridView.Name = "inputGridView";

@@ -40,3 +40,8 @@ C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQ
 C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.dll
 C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.pdb
 C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csprojAssemblyReference.cache
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\bin\Debug\MultiQueueModels.dll
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\bin\Debug\MultiQueueModels.pdb
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csprojAssemblyReference.cache
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.dll
+M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.pdb

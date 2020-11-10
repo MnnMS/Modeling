@@ -24,7 +24,7 @@ namespace MultiQueueModels
         public int EndTime { get; set; }
         public int TimeInQueue { get; set; }
 
-        public List<SimulationCase> getTable(int stoppingNumber, SimulationSystem system)
+        public static List<SimulationCase> getTable(int stoppingNumber, SimulationSystem system)
         {
             List<Server> servers = system.Servers;
             List<SimulationCase> table = new List<SimulationCase>();
@@ -35,7 +35,7 @@ namespace MultiQueueModels
                 if (i > 0) {
                     prevRow = table[i - 1];
                 }
-                SimulationCase row = table[i];
+                SimulationCase row = new SimulationCase();
                 row.CustomerNumber = i+1;
                 row.RandomInterArrival = rnd.Next(1, 100);
                 row.InterArrival = mapValue(row.RandomInterArrival, system.InterarrivalDistribution);
@@ -97,7 +97,7 @@ namespace MultiQueueModels
             return table;
         }
 
-        public Server getFirstServer(List<Server> servers)
+        public static Server getFirstServer(List<Server> servers)
         {
             int mnFinishTime = int.MaxValue;
             int mnFinishTime_index = 0;
@@ -112,7 +112,7 @@ namespace MultiQueueModels
             return servers[mnFinishTime_index];
         }
 
-        public int mapValue(int value, List<TimeDistribution> distributions)
+        public static int mapValue(int value, List<TimeDistribution> distributions)
         {
             for(int i = 0; i < distributions.Count; i++)
             {

@@ -81,12 +81,15 @@ namespace MultiQueueSimulation
             timeDistribution = new TimeDistribution();
             int rowCount = inputGridView.Rows.Count;
 
-            for (int i = 0; i <rowCount; i++)
+            for (int i = 0; i <(rowCount-1); i++)
             {              
                 timeDistribution.Time = int.Parse(inputGridView.Rows[i].Cells[0].Value.ToString());
                 timeDistribution.Probability = decimal.Parse(inputGridView.Rows[i].Cells[1].Value.ToString());
                 SystemHelper.InterarrivalDistribution.Add(timeDistribution);
             }
+            SimulationSystem system = new SimulationSystem();
+            SystemHelper.start(system);
+            Console.WriteLine("aaaaaaaaaaaaaaaaa");
         }
     }
 }
