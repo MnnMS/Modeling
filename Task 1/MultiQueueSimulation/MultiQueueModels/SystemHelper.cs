@@ -19,6 +19,10 @@ namespace MultiQueueModels
         public static int nCustomers_WaitedInQueue;
         public static int Simulation_runTime;
         public static int mx_QueueLength;
+
+        //to save all start , end time service and server id
+        public static List<Serviceinfo> servicesinfo;
+
        //Variables for every server
         public static List<int> idleTimeOFserver = new List<int>();
         public static List<int> serviceTime = new List<int>();
