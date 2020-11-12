@@ -41,6 +41,15 @@ namespace MultiQueueSimulation
                 MessageBox.Show("Please Enter the number of servers");
             }
             SystemHelper.NumberOfServers = num_of_servers;
+
+            for (int i = 1; i <= num_of_servers; i++)
+            {
+                Server server = new Server();
+                server.ID = i;
+                server.FinishTime = 0;
+                SystemHelper.Servers.Add(server);
+            }
+
             inputTable.Columns.Add("Interarrival Time");
             inputTable.Columns.Add("Probability");
 
@@ -80,12 +89,18 @@ namespace MultiQueueSimulation
         {
             timeDistribution = new TimeDistribution();
             int rowCount = inputGridView.Rows.Count;
-
+            int colCount = inputGridView.Columns.Count;
             for (int i = 0; i <(rowCount-1); i++)
-            {              
+            {
                 timeDistribution.Time = int.Parse(inputGridView.Rows[i].Cells[0].Value.ToString());
                 timeDistribution.Probability = decimal.Parse(inputGridView.Rows[i].Cells[1].Value.ToString());
                 SystemHelper.InterarrivalDistribution.Add(timeDistribution);
+                for (int j=0; j < SystemHelper.NumberOfServers; j++)
+                {
+                   timeDistribution.Time = int.Parse(inputGridView.Rows[i].Cells[j*2+2].Value.ToString());
+                   timeDistribution.Probability = decimal.Parse(inputGridView.Rows[i].Cells[j*2+3].Value.ToString());
+                   SystemHelper.Servers[j].TimeDistribution.Add(timeDistribution);
+                }
             }
             SimulationSystem system = new SimulationSystem();
             SystemHelper.start(system);

@@ -40,6 +40,14 @@ namespace MultiQueueModels
                 row.RandomInterArrival = rnd.Next(1, 100);
                 row.InterArrival = mapValue(row.RandomInterArrival, system.InterarrivalDistribution);
                 row.ArrivalTime = (i == 0 ? 0 : prevRow.ArrivalTime + row.InterArrival);
+                if (i == 0)
+                {
+                    row.RandomInterArrival = -1;
+                    row.InterArrival = -1;
+                    row.ArrivalTime = 0;
+                }
+                
+                
                 
                 var x = system.SelectionMethod;
                 int serverIndex = 0;
