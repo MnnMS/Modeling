@@ -45,6 +45,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="PerformanceMeasures.cs" />
     <Compile Include="Server.cs" />
+    <Compile Include="Serviceinfo.cs" />
     <Compile Include="SimulationCase.cs" />
     <Compile Include="SimulationSystem.cs" />
     <Compile Include="SystemHelper.cs" />
