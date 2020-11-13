@@ -121,8 +121,8 @@ namespace MultiQueueSimulation
 
             string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
             MessageBox.Show(result);
-            int mx = 0;
-            for (int i = 0; i < 3; i++)
+
+            /*for (int i = 0; i < 3; i++)
             {
                 MessageBox.Show("Customer No. " + system.SimulationTable[i].CustomerNumber);
                 MessageBox.Show("Random dig interarrival. " + system.SimulationTable[i].RandomInterArrival);
@@ -134,7 +134,7 @@ namespace MultiQueueSimulation
                 MessageBox.Show("service time. " + system.SimulationTable[i].ServiceTime);
                 MessageBox.Show("end time. " + system.SimulationTable[i].EndTime);
                 MessageBox.Show("queue. " + system.SimulationTable[i].TimeInQueue);
-            }
+            }*/
             
         }
     }

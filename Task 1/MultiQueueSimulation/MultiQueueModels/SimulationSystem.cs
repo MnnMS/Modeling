@@ -47,7 +47,6 @@ namespace MultiQueueModels
 
         public void genTable()
         {
-            List<Server> servers = Servers;
             Random rnd = new Random();
             for (int i = 0; i < StoppingNumber; i++)
             {
@@ -76,13 +75,13 @@ namespace MultiQueueModels
                 if (x == Enums.SelectionMethod.HighestPriority)
                 {
                     if (i == 0)
-                        row.AssignedServer = servers[0];
+                        row.AssignedServer = Servers[0];
                     else
                     {
                         bool found = false;
-                        for (int j = 0; j < servers.Count; j++)
+                        for (int j = 0; j < Servers.Count; j++)
                         {
-                            if (row.ArrivalTime >= servers[j].FinishTime)
+                            if (row.ArrivalTime >= Servers[j].FinishTime)
                             {
                                 found = true;
                                 serverIndex = j;
@@ -91,33 +90,38 @@ namespace MultiQueueModels
                         }
                         if (!found)
                         {
-                            row.AssignedServer = getFirstServer(servers);
+                            row.AssignedServer = getFirstServer(Servers);
                             row.TimeInQueue = row.AssignedServer.FinishTime - row.ArrivalTime;
                         }
                         else
-                            row.AssignedServer = servers[serverIndex];
+                            row.AssignedServer = Servers[serverIndex];
                     }
                 }
                 else if (x == Enums.SelectionMethod.Random)
                 {
-                    serverIndex = rnd.Next(0, servers.Count - 1);
+                    serverIndex = rnd.Next(0, Servers.Count - 1);
                     if (i == 0)
-                        row.AssignedServer = servers[serverIndex];
+                        row.AssignedServer = Servers[serverIndex];
+                    List<Server> freeServers = new List<Server>();
                     bool found = false;
-                    do
+                    for (int k = 0; k < Servers.Count; k++)
                     {
-                        if (row.ArrivalTime >= servers[serverIndex].FinishTime)
+                        if(row.ArrivalTime >= Servers[k].FinishTime)
+                        {
+                            freeServers.Add(Servers[k]);
                             found = true;
-                        else
-                            serverIndex = rnd.Next(0, servers.Count - 1);
-                    } while (!found);
-                    if (found)
-                        row.AssignedServer = servers[serverIndex];
-                    else
+                        }
+                    }
+                    if (!found)
                     {
-                        row.AssignedServer = getFirstServer(servers);
+                        row.AssignedServer = getFirstServer(Servers);
                         row.TimeInQueue = row.AssignedServer.FinishTime - row.ArrivalTime;
                     }
+                    else
+                    {
+                        serverIndex = rnd.Next(0, freeServers.Count - 1);
+                        row.AssignedServer = freeServers[serverIndex];
+                    }      
                 }
                 /* else utilization [bonus]
                 {

@@ -29,7 +29,7 @@ namespace MultiQueueModels
         public int nCustomers_served;
 
 
-        public void calc_serverPerformance ()
+        public void calc_serverPerformance()
         {
             IdleProbability = (decimal)(SystemHelper.Simulation_runTime - TotalWorkingTime) / SystemHelper.Simulation_runTime;
             AverageServiceTime = (decimal)TotalWorkingTime / nCustomers_served;

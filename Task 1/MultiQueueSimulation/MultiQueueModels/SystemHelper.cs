@@ -17,13 +17,7 @@ namespace MultiQueueModels
         public static Dictionary<int,int> queue = new Dictionary<int, int>();
 
         //to save all start , end time service and server id
-        public static List<Serviceinfo> servicesinfo;
-
-        //Variables for every server
-        /*public static Dictionary<int,int> idleTimeOFserver = new Dictionary<int, int>();
-        public static Dictionary<int, int> serviceTime = new Dictionary<int, int>();
-        public static List<int> nCustomers_server = new List<int>();
-        public static List<int> TimeOnCalls_server = new List<int>();*/    
+        public static List<Serviceinfo> servicesinfo;   
     }
 
     
