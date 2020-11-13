@@ -15,16 +15,6 @@ namespace MultiQueueModels
             this.PerformanceMeasures = new PerformanceMeasures();
             this.SimulationTable = new List<SimulationCase>();
         }
-
-        public SimulationSystem(int nServers, int stoppingN, List<Server> servers, List<TimeDistribution> dist, Enums.StoppingCriteria stopping, Enums.SelectionMethod selection)
-        {
-            this.NumberOfServers = nServers;
-            this.StoppingNumber = stoppingN;
-            this.Servers = servers;
-            this.InterarrivalDistribution = dist;
-            this.StoppingCriteria = stopping;
-            this.SelectionMethod = selection;
-        }
         
         ///////////// INPUTS ///////////// 
         public int NumberOfServers { get; set; }
@@ -38,6 +28,163 @@ namespace MultiQueueModels
         ///////////// OUTPUTS /////////////
         public List<SimulationCase> SimulationTable { get; set; }
         public PerformanceMeasures PerformanceMeasures { get; set; }
+
+        public void initSevers()
+        {
+            for (int i = 1; i <= NumberOfServers; i++)
+            {
+                Server server = new Server
+                {
+                    ID = i,
+                    FinishTime = 0,
+                    idleTime = 0,
+                    TotalWorkingTime = 0,
+                    nCustomers_served = 0
+                };
+                Servers.Add(server);
+            }
+        }
+
+        public void genTable()
+        {
+            List<Server> servers = Servers;
+            Random rnd = new Random();
+            for (int i = 0; i < StoppingNumber; i++)
+            {
+                SimulationCase prevRow = new SimulationCase();
+                if (i > 0)
+                {
+                    prevRow = SimulationTable[i - 1];
+                }
+                SimulationCase row = new SimulationCase();
+                row.CustomerNumber = i + 1;
+                row.RandomInterArrival = rnd.Next(1, 100);
+                row.InterArrival = mapValue(row.RandomInterArrival, InterarrivalDistribution);
+                row.ArrivalTime = (i == 0 ? 0 : prevRow.ArrivalTime + row.InterArrival);
+                
+                if (i == 0)
+                {
+                    row.RandomInterArrival = 1;
+                    row.InterArrival = 0;
+                    row.ArrivalTime = 0;
+                }
+
+
+                row.TimeInQueue = 0;
+                var x = SelectionMethod;
+                int serverIndex = 0;
+                if (x == Enums.SelectionMethod.HighestPriority)
+                {
+                    if (i == 0)
+                        row.AssignedServer = servers[0];
+                    else
+                    {
+                        bool found = false;
+                        for (int j = 0; j < servers.Count; j++)
+                        {
+                            if (row.ArrivalTime >= servers[j].FinishTime)
+                            {
+                                found = true;
+                                serverIndex = j;
+                                break;
+                            }
+                        }
+                        if (!found)
+                        {
+                            row.AssignedServer = getFirstServer(servers);
+                            row.TimeInQueue = row.AssignedServer.FinishTime - row.ArrivalTime;
+                        }
+                        else
+                            row.AssignedServer = servers[serverIndex];
+                    }
+                }
+                else if (x == Enums.SelectionMethod.Random)
+                {
+                    serverIndex = rnd.Next(0, servers.Count - 1);
+                    if (i == 0)
+                        row.AssignedServer = servers[serverIndex];
+                    bool found = false;
+                    do
+                    {
+                        if (row.ArrivalTime >= servers[serverIndex].FinishTime)
+                            found = true;
+                        else
+                            serverIndex = rnd.Next(0, servers.Count - 1);
+                    } while (!found);
+                    if (found)
+                        row.AssignedServer = servers[serverIndex];
+                    else
+                    {
+                        row.AssignedServer = getFirstServer(servers);
+                        row.TimeInQueue = row.AssignedServer.FinishTime - row.ArrivalTime;
+                    }
+                }
+                /* else utilization [bonus]
+                {
+
+                }*/
+                row.RandomService = rnd.Next(1, 100);
+                row.ServiceTime = mapValue(row.RandomService, row.AssignedServer.TimeDistribution);
+                row.StartTime = row.ArrivalTime + row.TimeInQueue;
+                row.EndTime = row.StartTime + row.ServiceTime;
+                row.AssignedServer.FinishTime = row.EndTime;
+                SimulationTable.Add(row);
+
+                /*Calculations for equations*/
+                SystemHelper.TotalTime_CusWaitedinQueue += row.TimeInQueue;
+                SystemHelper.nCustomers_Total = row.CustomerNumber;
+                if (row.TimeInQueue > 0)
+                    SystemHelper.nCustomers_WaitedInQueue += 1;
+                SystemHelper.Simulation_runTime = Math.Max(row.EndTime, SystemHelper.Simulation_runTime);
+                for(int k = row.ArrivalTime; k < row.StartTime; k++)
+                {
+                    if (SystemHelper.queue.ContainsKey(k))
+                        SystemHelper.queue[k]++;
+                    else
+                        SystemHelper.queue.Add(k, 1);
+                    SystemHelper.mx_QueueLength = Math.Max(SystemHelper.mx_QueueLength, SystemHelper.queue[k]);
+                }
+                row.AssignedServer.TotalWorkingTime += row.ServiceTime;
+                row.AssignedServer.nCustomers_served += 1;
+            }
+        }
+
+        public void calc_performance()
+        {
+            int cnt = Servers.Count;
+            for (int i = 0; i < cnt; i++)
+            {
+                Servers[i].calc_serverPerformance();
+            }
+        }
+
+        public Server getFirstServer(List<Server> servers)
+        {
+            int mnFinishTime = int.MaxValue;
+            int mnFinishTime_index = 0;
+            for (int j = 0; j < servers.Count; j++)
+            {
+                if (servers[j].FinishTime < mnFinishTime)
+                {
+                    mnFinishTime = servers[j].FinishTime;
+                    mnFinishTime_index = j;
+                }
+            }
+            return servers[mnFinishTime_index];
+        }
+
+        public int mapValue(int value, List<TimeDistribution> distributions)
+        {
+            for (int i = 0; i < distributions.Count; i++)
+            {
+                TimeDistribution distribution = distributions[i];
+                if (value >= distribution.MinRange && value <= distribution.MaxRange)
+                {
+                    return distribution.Time;
+                }
+            }
+            return -1;
+        }
 
     }
 }

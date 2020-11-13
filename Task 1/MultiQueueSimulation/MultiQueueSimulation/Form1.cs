@@ -21,10 +21,15 @@ namespace MultiQueueSimulation
         {
             InitializeComponent();
         }
+        SimulationSystem system = new SimulationSystem();
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            SystemHelper.TotalTime_CusWaitedinQueue = 0;
+            SystemHelper.nCustomers_WaitedInQueue = 0;
+            SystemHelper.Simulation_runTime = 0;
+            SystemHelper.mx_QueueLength = 0;  
         }
 
         private void numOfServers_TextChanged(object sender, EventArgs e)
@@ -40,15 +45,9 @@ namespace MultiQueueSimulation
             {
                 MessageBox.Show("Please Enter the number of servers");
             }
-            SystemHelper.NumberOfServers = num_of_servers;
-
-            for (int i = 1; i <= num_of_servers; i++)
-            {
-                Server server = new Server();
-                server.ID = i;
-                server.FinishTime = 0;
-                SystemHelper.Servers.Add(server);
-            }
+            system.NumberOfServers = num_of_servers;
+            system.initSevers();
+            
 
             inputTable.Columns.Add("Interarrival Time");
             inputTable.Columns.Add("Probability");
@@ -67,7 +66,7 @@ namespace MultiQueueSimulation
         {
             try
             {
-                SystemHelper.StoppingNumber = int.Parse(stopNum.Text);
+                system.StoppingNumber = int.Parse(stopNum.Text);
             }
             catch (Exception)
             {
@@ -77,43 +76,66 @@ namespace MultiQueueSimulation
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SystemHelper.StoppingCriteria = (Enums.StoppingCriteria)int.Parse(comboBox1.Text);          
+            system.StoppingCriteria = (Enums.StoppingCriteria)int.Parse(comboBox1.Text);          
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SystemHelper.SelectionMethod = (Enums.SelectionMethod)int.Parse(comboBox2.Text);
+            system.SelectionMethod = (Enums.SelectionMethod)int.Parse(comboBox2.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
             int rowCount = inputGridView.Rows.Count;
             int colCount = inputGridView.Columns.Count;
             for (int i = 0; i <(rowCount-1); i++)
             {
-                TimeDistribution timeDistribution = new TimeDistribution();
-                timeDistribution.Time = int.Parse(inputGridView.Rows[i].Cells[0].Value.ToString());
-                timeDistribution.Probability = decimal.Parse(inputGridView.Rows[i].Cells[1].Value.ToString());
-                SystemHelper.InterarrivalDistribution.Add(timeDistribution);
-                for (int j=0; j < SystemHelper.NumberOfServers; j++)
+                TimeDistribution timeDistribution = new TimeDistribution
                 {
-                   TimeDistribution timeDistribution2 = new TimeDistribution();
-                   timeDistribution2.Time = int.Parse(inputGridView.Rows[i].Cells[j*2+2].Value.ToString());
-                   timeDistribution2.Probability = decimal.Parse(inputGridView.Rows[i].Cells[j*2+3].Value.ToString());
-                   SystemHelper.Servers[j].TimeDistribution.Add(timeDistribution2);
+                    Time = int.Parse(inputGridView.Rows[i].Cells[0].Value.ToString()),
+                    Probability = decimal.Parse(inputGridView.Rows[i].Cells[1].Value.ToString())
+                };
+                system.InterarrivalDistribution.Add(timeDistribution);
+                for (int j=0; j < system.NumberOfServers; j++)
+                {
+                    timeDistribution = new TimeDistribution
+                    {
+                        Time = int.Parse(inputGridView.Rows[i].Cells[j * 2 + 2].Value.ToString()),
+                        Probability = decimal.Parse(inputGridView.Rows[i].Cells[j * 2 + 3].Value.ToString())
+                    };
+                    system.Servers[j].TimeDistribution.Add(timeDistribution);
                 }
             }
 
-            SystemHelper.InterarrivalDistribution = TimeDistribution.Get_DistributionTable(SystemHelper.InterarrivalDistribution);
-            for(int i=0;i< SystemHelper.NumberOfServers; i++)
+            system.InterarrivalDistribution = TimeDistribution.Get_DistributionTable(system.InterarrivalDistribution);
+            for(int i=0;i< system.NumberOfServers; i++)
             {
-                SystemHelper.Servers[i].TimeDistribution = TimeDistribution.Get_DistributionTable(SystemHelper.Servers[i].TimeDistribution);
+                system.Servers[i].TimeDistribution = TimeDistribution.Get_DistributionTable(system.Servers[i].TimeDistribution);
             }
 
-            SimulationSystem system = new SimulationSystem();
-            SystemHelper.start(system);
-            Console.WriteLine("aaaaaaaaaaaaaaaaa");
+            system.genTable();
+            system.calc_performance();
+            system.PerformanceMeasures.Calc_AverageWaitingTime(SystemHelper.TotalTime_CusWaitedinQueue, SystemHelper.nCustomers_Total);
+            system.PerformanceMeasures.Calc_WaitingProbability(SystemHelper.nCustomers_WaitedInQueue, SystemHelper.nCustomers_Total);
+            system.PerformanceMeasures.MaxQueueLength = SystemHelper.mx_QueueLength;
+
+            string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
+            MessageBox.Show(result);
+            int mx = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                MessageBox.Show("Customer No. " + system.SimulationTable[i].CustomerNumber);
+                MessageBox.Show("Random dig interarrival. " + system.SimulationTable[i].RandomInterArrival);
+                MessageBox.Show("interarrival. " + system.SimulationTable[i].InterArrival);
+                MessageBox.Show("arrival. " + system.SimulationTable[i].ArrivalTime);
+                MessageBox.Show("server id. " + system.SimulationTable[i].AssignedServer.ID);
+                MessageBox.Show("time begin. " + system.SimulationTable[i].StartTime);
+                MessageBox.Show("random dig service. " + system.SimulationTable[i].RandomService);
+                MessageBox.Show("service time. " + system.SimulationTable[i].ServiceTime);
+                MessageBox.Show("end time. " + system.SimulationTable[i].EndTime);
+                MessageBox.Show("queue. " + system.SimulationTable[i].TimeInQueue);
+            }
+            
         }
     }
 }

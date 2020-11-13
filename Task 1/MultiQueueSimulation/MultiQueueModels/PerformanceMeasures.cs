@@ -13,16 +13,14 @@ namespace MultiQueueModels
         public decimal WaitingProbability { get; set; }
 
 
-        public decimal Calc_AverageWaitingTime(int TotalTime_CusWaitedinQueue, int ncustomers_Total)
+        public void Calc_AverageWaitingTime(int TotalTime_CusWaitedinQueue, int ncustomers_Total)
         {
-            decimal Avg = (decimal)TotalTime_CusWaitedinQueue / ncustomers_Total;
-            return Avg;
+            AverageWaitingTime = (decimal)TotalTime_CusWaitedinQueue / ncustomers_Total;
         }
 
-        public decimal Calc_WaitingProbability(int nCustomers_WaitedInQueue, int ncustomers_Total)
+        public void Calc_WaitingProbability(int nCustomers_WaitedInQueue, int ncustomers_Total)
         {
-            decimal wait = (decimal)nCustomers_WaitedInQueue / ncustomers_Total;
-            return wait;
+            WaitingProbability = (decimal)nCustomers_WaitedInQueue / ncustomers_Total;
         }
     }
 }

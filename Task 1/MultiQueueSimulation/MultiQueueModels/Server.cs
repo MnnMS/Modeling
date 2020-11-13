@@ -24,16 +24,16 @@ namespace MultiQueueModels
         public int FinishTime { get; set; }
         public int TotalWorkingTime { get; set; }
 
+        // equations vars
+        public int idleTime;
+        public int nCustomers_served;
 
-        public List<Server> calc_serverPerformance (List<Server> servers,int Simulation_runTime, List<int> idleTimeOFserver, List<int> serviceTime, List<int> nCustomers_server, List<int> TimeOnCalls_server)
+
+        public void calc_serverPerformance ()
         {
-            for (int i = 0;i < servers.Count; i++)
-            {
-                servers[i].IdleProbability = (decimal)idleTimeOFserver[i] / Simulation_runTime;
-                servers[i].AverageServiceTime = (decimal)serviceTime[i] / nCustomers_server[i];
-                servers[i].Utilization = (decimal)TimeOnCalls_server[i] / Simulation_runTime;
-            }
-            return servers;
+            IdleProbability = (decimal)(SystemHelper.Simulation_runTime - TotalWorkingTime) / SystemHelper.Simulation_runTime;
+            AverageServiceTime = (decimal)TotalWorkingTime / nCustomers_served;
+            Utilization = (decimal)TotalWorkingTime / SystemHelper.Simulation_runTime;
         }
     }
 }
