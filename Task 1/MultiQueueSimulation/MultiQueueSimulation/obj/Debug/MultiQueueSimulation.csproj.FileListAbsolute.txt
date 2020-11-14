@@ -110,3 +110,4 @@ M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimula
 M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
 M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.ServerBusyTimeGraph.resources
+C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.ServerBusyTimeGraph.resources

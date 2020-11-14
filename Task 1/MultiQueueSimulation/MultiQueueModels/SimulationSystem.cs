@@ -135,6 +135,7 @@ namespace MultiQueueModels
                         }
                     }
                     row.AssignedServer = Servers[serverIndex];
+                    row.TimeInQueue = row.AssignedServer.FinishTime - row.ArrivalTime;
                 }
                 
                 row.RandomService = rnd.Next(1, 100);

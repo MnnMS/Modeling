@@ -86,10 +86,12 @@ namespace MultiQueueSimulation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            panel1.Visible = true;
             int rowCount = inputGridView.Rows.Count;
             int colCount = inputGridView.Columns.Count;
             for (int i = 0; i <(rowCount-1); i++)
             {
+             
                 TimeDistribution timeDistribution = new TimeDistribution
                 {
                     Time = int.Parse(inputGridView.Rows[i].Cells[0].Value.ToString()),
@@ -120,23 +122,42 @@ namespace MultiQueueSimulation
             system.PerformanceMeasures.MaxQueueLength = SystemHelper.mx_QueueLength;
 
             
-            string result = TestingManager.Test(system, Constants.FileNames.TestCase3);
+            string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
             MessageBox.Show(result);
+            int custNo = SystemHelper.nCustomers_Total;
+            outputGridView.Rows.Add(custNo);
+            for (int i = 0; i < custNo; i++)
+            {                
+                outputGridView.Rows[i].Cells[0].Value = system.SimulationTable[i].CustomerNumber;
+                outputGridView.Rows[i].Cells[1].Value = system.SimulationTable[i].RandomInterArrival;
+                outputGridView.Rows[i].Cells[2].Value = system.SimulationTable[i].InterArrival;
+                outputGridView.Rows[i].Cells[3].Value = system.SimulationTable[i].ArrivalTime;
+                outputGridView.Rows[i].Cells[4].Value = system.SimulationTable[i].AssignedServer.ID;
+                outputGridView.Rows[i].Cells[5].Value = system.SimulationTable[i].StartTime;
+                outputGridView.Rows[i].Cells[6].Value = system.SimulationTable[i].RandomService;
+                outputGridView.Rows[i].Cells[7].Value = system.SimulationTable[i].ServiceTime;
+                outputGridView.Rows[i].Cells[8].Value = system.SimulationTable[i].EndTime;
+                outputGridView.Rows[i].Cells[9].Value = system.SimulationTable[i].TimeInQueue;
+            }
+            avgWaitTime.Text = system.PerformanceMeasures.AverageWaitingTime.ToString();
+            maxQueueLength.Text = system.PerformanceMeasures.MaxQueueLength.ToString();
+            waitingProb.Text = system.PerformanceMeasures.WaitingProbability.ToString();
 
-            /*for (int i = 0; i < 3; i++)
+            int serverCount = system.Servers.Count;
+            outputGridView2.Rows.Add(custNo);
+            for (int i = 0; i < serverCount; i++)
             {
-                MessageBox.Show("Customer No. " + system.SimulationTable[i].CustomerNumber);
-                MessageBox.Show("Random dig interarrival. " + system.SimulationTable[i].RandomInterArrival);
-                MessageBox.Show("interarrival. " + system.SimulationTable[i].InterArrival);
-                MessageBox.Show("arrival. " + system.SimulationTable[i].ArrivalTime);
-                MessageBox.Show("server id. " + system.SimulationTable[i].AssignedServer.ID);
-                MessageBox.Show("time begin. " + system.SimulationTable[i].StartTime);
-                MessageBox.Show("random dig service. " + system.SimulationTable[i].RandomService);
-                MessageBox.Show("service time. " + system.SimulationTable[i].ServiceTime);
-                MessageBox.Show("end time. " + system.SimulationTable[i].EndTime);
-                MessageBox.Show("queue. " + system.SimulationTable[i].TimeInQueue);
-            }*/
-            
+                
+                outputGridView2.Rows[i].Cells[0].Value = system.Servers[i].ID;
+                outputGridView2.Rows[i].Cells[1].Value = Math.Round(system.Servers[i].IdleProbability,2);
+                outputGridView2.Rows[i].Cells[2].Value = Math.Round(system.Servers[i].AverageServiceTime,2);
+                outputGridView2.Rows[i].Cells[3].Value = Math.Round(system.Servers[i].Utilization,2);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
         }
     }
 }
