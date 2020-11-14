@@ -29,7 +29,7 @@ namespace MultiQueueSimulation
             SystemHelper.TotalTime_CusWaitedinQueue = 0;
             SystemHelper.nCustomers_WaitedInQueue = 0;
             SystemHelper.Simulation_runTime = 0;
-            SystemHelper.mx_QueueLength = 0;  
+            SystemHelper.mx_QueueLength = 0;
         }
 
         private void numOfServers_TextChanged(object sender, EventArgs e)
@@ -119,7 +119,8 @@ namespace MultiQueueSimulation
             system.PerformanceMeasures.Calc_WaitingProbability(SystemHelper.nCustomers_WaitedInQueue, SystemHelper.nCustomers_Total);
             system.PerformanceMeasures.MaxQueueLength = SystemHelper.mx_QueueLength;
 
-            string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
+            
+            string result = TestingManager.Test(system, Constants.FileNames.TestCase3);
             MessageBox.Show(result);
 
             /*for (int i = 0; i < 3; i++)

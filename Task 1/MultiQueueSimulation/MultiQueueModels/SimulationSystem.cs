@@ -123,10 +123,20 @@ namespace MultiQueueModels
                         row.AssignedServer = freeServers[serverIndex];
                     }      
                 }
-                /* else utilization [bonus]
+                else
                 {
-
-                }*/
+                    int mnServicTime = int.MaxValue;
+                    for(int k=0;k<Servers.Count;k++)
+                    {
+                        if(Servers[k].TotalWorkingTime < mnServicTime)
+                        {
+                            mnServicTime = Servers[k].TotalWorkingTime;
+                            serverIndex = k;
+                        }
+                    }
+                    row.AssignedServer = Servers[serverIndex];
+                }
+                
                 row.RandomService = rnd.Next(1, 100);
                 row.ServiceTime = mapValue(row.RandomService, row.AssignedServer.TimeDistribution);
                 row.StartTime = row.ArrivalTime + row.TimeInQueue;
