@@ -111,3 +111,17 @@ M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimula
 M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
 M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.ServerBusyTimeGraph.resources
 C:\Users\Mostafa-PC\Documents\GitHub\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.ServerBusyTimeGraph.resources
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.pdb
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.dll
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\bin\Debug\MultiQueueModels.pdb
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csprojAssemblyReference.cache
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form1.resources
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Properties.Resources.resources
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.ServerBusyTimeGraph.resources
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.GenerateResource.cache
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CopyComplete
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb

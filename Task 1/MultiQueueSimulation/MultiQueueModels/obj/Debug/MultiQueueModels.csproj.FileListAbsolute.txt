@@ -45,3 +45,9 @@ M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels
 M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csprojAssemblyReference.cache
 M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.dll
 M:\4th Year\Modeling\Tasks\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.pdb
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\bin\Debug\MultiQueueModels.dll
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\bin\Debug\MultiQueueModels.pdb
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csprojAssemblyReference.cache
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.dll
+C:\Users\User\Desktop\m\Modeling\Task 1\MultiQueueSimulation\MultiQueueModels\obj\Debug\MultiQueueModels.pdb

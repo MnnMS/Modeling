@@ -47,6 +47,8 @@ namespace MultiQueueModels
 
         public void genTable()
         {
+            Serviceinfo s;
+            List<Serviceinfo> serviceinfos = new List<Serviceinfo>();
             Random rnd = new Random();
             for (int i = 0; (i < StoppingNumber && (int)StoppingCriteria == 1) || (SystemHelper.Simulation_runTime < StoppingNumber && (int)StoppingCriteria == 2); i++)
             {
@@ -144,7 +146,13 @@ namespace MultiQueueModels
                 row.EndTime = row.StartTime + row.ServiceTime;
                 row.AssignedServer.FinishTime = row.EndTime;
                 SimulationTable.Add(row);
-
+                s = new Serviceinfo
+                {
+                    EndTime = row.EndTime,
+                    StartTime = row.StartTime,
+                    ID = row.AssignedServer.ID    
+                };
+                serviceinfos.Add(s);
                 /*Calculations for equations*/
                 SystemHelper.TotalTime_CusWaitedinQueue += row.TimeInQueue;
                 SystemHelper.nCustomers_Total = row.CustomerNumber;
@@ -162,6 +170,7 @@ namespace MultiQueueModels
                 row.AssignedServer.TotalWorkingTime += row.ServiceTime;
                 row.AssignedServer.nCustomers_served += 1;
             }
+            SystemHelper.servicesinfo = serviceinfos;
         }
 
         public void calc_performance()

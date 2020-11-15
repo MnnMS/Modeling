@@ -240,5 +240,29 @@ namespace MultiQueueSimulation
                 outputGridView2.Rows[i].Cells[3].Value = Math.Round(system.Servers[i].Utilization, 2);
             }
         }
+
+        private void outputGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Please enter number");
+            }
+            else { 
+            int serverNum = Int32.Parse(textBox1.Text);
+            ServerBusyTimeGraph serverBusyTimeGraph = new ServerBusyTimeGraph(serverNum);
+            serverBusyTimeGraph.Show();
+                textBox1.Text = "";
+            }
+        }
     }
 }
