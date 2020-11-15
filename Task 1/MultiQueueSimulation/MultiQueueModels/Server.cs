@@ -23,5 +23,24 @@ namespace MultiQueueModels
         //optional if needed use them
         public int FinishTime { get; set; }
         public int TotalWorkingTime { get; set; }
+
+        // equations vars
+        public int idleTime;
+        public int nCustomers_served;
+
+
+        public void calc_serverPerformance()
+        {
+            Utilization = (decimal)TotalWorkingTime / SystemHelper.Simulation_runTime;
+            IdleProbability = (decimal)(SystemHelper.Simulation_runTime - TotalWorkingTime) / SystemHelper.Simulation_runTime;
+            try
+            {
+                AverageServiceTime = (decimal)TotalWorkingTime / nCustomers_served;
+            }
+            catch(Exception e)
+            {
+                AverageServiceTime = 0;
+            }
+        }
     }
 }
