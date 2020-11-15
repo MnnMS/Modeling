@@ -31,6 +31,7 @@ namespace MultiQueueSimulation
             SystemHelper.nCustomers_WaitedInQueue = 0;
             SystemHelper.Simulation_runTime = 0;
             SystemHelper.mx_QueueLength = 0;
+            SystemHelper.nCustomers_Total = 0;
             SystemHelper.queue = new Dictionary<int, int>();
         }
 
@@ -90,10 +91,8 @@ namespace MultiQueueSimulation
         {
             panel1.Visible = true;
             int rowCount = inputGridView.Rows.Count;
-            int colCount = inputGridView.Columns.Count;
             for (int i = 0; i <(rowCount-1); i++)
-            {
-             
+            {       
                 TimeDistribution timeDistribution = new TimeDistribution
                 {
                     Time = int.Parse(inputGridView.Rows[i].Cells[0].Value.ToString()),
@@ -109,23 +108,7 @@ namespace MultiQueueSimulation
                     };
                     system.Servers[j].TimeDistribution.Add(timeDistribution);
                 }
-            }
-
-            system.InterarrivalDistribution = TimeDistribution.Get_DistributionTable(system.InterarrivalDistribution);
-            for(int i=0;i< system.NumberOfServers; i++)
-            {
-                system.Servers[i].TimeDistribution = TimeDistribution.Get_DistributionTable(system.Servers[i].TimeDistribution);
-            }
-
-            system.genTable();
-            system.calc_performance();
-            system.PerformanceMeasures.Calc_AverageWaitingTime(SystemHelper.TotalTime_CusWaitedinQueue, SystemHelper.nCustomers_Total);
-            system.PerformanceMeasures.Calc_WaitingProbability(SystemHelper.nCustomers_WaitedInQueue, SystemHelper.nCustomers_Total);
-            system.PerformanceMeasures.MaxQueueLength = SystemHelper.mx_QueueLength;
-
-            
-            string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
-            MessageBox.Show(result);
+            }    
             showTable();
         }
 
@@ -185,20 +168,7 @@ namespace MultiQueueSimulation
                         }
                     }
 
-                    system.InterarrivalDistribution = TimeDistribution.Get_DistributionTable(system.InterarrivalDistribution);
-                    for (int i = 0; i < system.NumberOfServers; i++)
-                    {
-                        system.Servers[i].TimeDistribution = TimeDistribution.Get_DistributionTable(system.Servers[i].TimeDistribution);
-                    }
                     panel1.Visible = true;
-                    system.genTable();
-                    system.calc_performance();
-                    system.PerformanceMeasures.Calc_AverageWaitingTime(SystemHelper.TotalTime_CusWaitedinQueue, SystemHelper.nCustomers_Total);
-                    system.PerformanceMeasures.Calc_WaitingProbability(SystemHelper.nCustomers_WaitedInQueue, SystemHelper.nCustomers_Total);
-                    system.PerformanceMeasures.MaxQueueLength = SystemHelper.mx_QueueLength;
-
-                    string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
-                    MessageBox.Show(result);
                     showTable();
                 }
                 catch
@@ -210,6 +180,22 @@ namespace MultiQueueSimulation
 
         private void showTable()
         {
+            system.InterarrivalDistribution = SystemHelper.Get_DistributionTable(system.InterarrivalDistribution);
+            for (int i = 0; i < system.NumberOfServers; i++)
+            {
+                system.Servers[i].TimeDistribution = SystemHelper.Get_DistributionTable(system.Servers[i].TimeDistribution);
+            }
+
+            system.genTable();
+            system.calc_performance();
+            system.PerformanceMeasures.Calc_AverageWaitingTime(SystemHelper.TotalTime_CusWaitedinQueue, SystemHelper.nCustomers_Total);
+            system.PerformanceMeasures.Calc_WaitingProbability(SystemHelper.nCustomers_WaitedInQueue, SystemHelper.nCustomers_Total);
+            system.PerformanceMeasures.MaxQueueLength = SystemHelper.mx_QueueLength;
+
+
+            string result = TestingManager.Test(system, Constants.FileNames.TestCase3);
+            MessageBox.Show(result);
+
             int custNo = SystemHelper.nCustomers_Total;
             outputGridView.Rows.Add(custNo);
             for (int i = 0; i < custNo; i++)
@@ -241,26 +227,21 @@ namespace MultiQueueSimulation
             }
         }
 
-        private void outputGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == "")
             {
                 MessageBox.Show("Please enter number");
             }
-            else { 
-            int serverNum = Int32.Parse(textBox1.Text);
-            ServerBusyTimeGraph serverBusyTimeGraph = new ServerBusyTimeGraph(serverNum);
-            serverBusyTimeGraph.Show();
+            else {
+                int serverNum = Int32.Parse(textBox1.Text);
+                if(serverNum > system.Servers.Count)
+                    MessageBox.Show("Please enter a number for an existing server");
+                else
+                {
+                    ServerBusyTimeGraph serverBusyTimeGraph = new ServerBusyTimeGraph(serverNum);
+                    serverBusyTimeGraph.Show(); 
+                }
                 textBox1.Text = "";
             }
         }

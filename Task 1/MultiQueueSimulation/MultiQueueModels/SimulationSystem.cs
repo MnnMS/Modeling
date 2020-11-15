@@ -146,6 +146,7 @@ namespace MultiQueueModels
                 row.EndTime = row.StartTime + row.ServiceTime;
                 row.AssignedServer.FinishTime = row.EndTime;
                 SimulationTable.Add(row);
+
                 s = new Serviceinfo
                 {
                     EndTime = row.EndTime,
@@ -153,6 +154,7 @@ namespace MultiQueueModels
                     ID = row.AssignedServer.ID    
                 };
                 serviceinfos.Add(s);
+
                 /*Calculations for equations*/
                 SystemHelper.TotalTime_CusWaitedinQueue += row.TimeInQueue;
                 SystemHelper.nCustomers_Total = row.CustomerNumber;

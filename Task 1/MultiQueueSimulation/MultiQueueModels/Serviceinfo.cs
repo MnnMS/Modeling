@@ -11,6 +11,5 @@ namespace MultiQueueModels
         public int StartTime;   
         public int EndTime;
         public int ID;
-
     }
 }
