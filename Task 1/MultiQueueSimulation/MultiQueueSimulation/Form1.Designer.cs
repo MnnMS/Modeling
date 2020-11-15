@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.stopNum = new System.Windows.Forms.TextBox();
             this.numOfServers = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +41,18 @@
             this.inputGridView = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.maxQueueLength = new System.Windows.Forms.Label();
+            this.waitingProb = new System.Windows.Forms.Label();
+            this.avgWaitTime = new System.Windows.Forms.Label();
+            this.outputGridView2 = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idleProb = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.avgServiceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.utiliz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.outputGridView = new System.Windows.Forms.DataGridView();
             this.customerNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.randomInterarrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,22 +64,11 @@
             this.serviceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeInQueue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.outputGridView2 = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.avgWaitTime = new System.Windows.Forms.Label();
-            this.waitingProb = new System.Windows.Forms.Label();
-            this.maxQueueLength = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idleProb = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avgServiceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.utiliz = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.inputGridView)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.outputGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outputGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // stopNum
@@ -186,22 +187,136 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.outputGridView);
-            this.panel1.Location = new System.Drawing.Point(12, 3);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1464, 785);
+            this.panel1.Size = new System.Drawing.Size(1464, 776);
             this.panel1.TabIndex = 5;
             this.panel1.Visible = false;
             // 
+            // maxQueueLength
+            // 
+            this.maxQueueLength.AutoSize = true;
+            this.maxQueueLength.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxQueueLength.Location = new System.Drawing.Point(1013, 619);
+            this.maxQueueLength.Name = "maxQueueLength";
+            this.maxQueueLength.Size = new System.Drawing.Size(0, 21);
+            this.maxQueueLength.TabIndex = 4;
+            // 
+            // waitingProb
+            // 
+            this.waitingProb.AutoSize = true;
+            this.waitingProb.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.waitingProb.Location = new System.Drawing.Point(1013, 678);
+            this.waitingProb.Name = "waitingProb";
+            this.waitingProb.Size = new System.Drawing.Size(0, 21);
+            this.waitingProb.TabIndex = 4;
+            // 
+            // avgWaitTime
+            // 
+            this.avgWaitTime.AutoSize = true;
+            this.avgWaitTime.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avgWaitTime.Location = new System.Drawing.Point(1013, 559);
+            this.avgWaitTime.Name = "avgWaitTime";
+            this.avgWaitTime.Size = new System.Drawing.Size(0, 21);
+            this.avgWaitTime.TabIndex = 4;
+            // 
+            // outputGridView2
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.outputGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.outputGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.outputGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.idleProb,
+            this.avgServiceTime,
+            this.utiliz});
+            this.outputGridView2.Location = new System.Drawing.Point(3, 518);
+            this.outputGridView2.Name = "outputGridView2";
+            this.outputGridView2.Size = new System.Drawing.Size(725, 241);
+            this.outputGridView2.TabIndex = 3;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            // 
+            // idleProb
+            // 
+            this.idleProb.HeaderText = "Idle Probability";
+            this.idleProb.Name = "idleProb";
+            this.idleProb.Width = 200;
+            // 
+            // avgServiceTime
+            // 
+            this.avgServiceTime.HeaderText = "Average Service Time";
+            this.avgServiceTime.Name = "avgServiceTime";
+            this.avgServiceTime.Width = 250;
+            // 
+            // utiliz
+            // 
+            this.utiliz.HeaderText = "Utilization";
+            this.utiliz.Name = "utiliz";
+            this.utiliz.Width = 130;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(760, 676);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(195, 23);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Waiting Probability: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(760, 617);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(194, 23);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Max Queue Length: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(760, 557);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(224, 23);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Average Waiting Time: ";
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1262, 28);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(164, 120);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Back";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // outputGridView
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.outputGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.outputGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.outputGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.outputGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.customerNo,
@@ -275,119 +390,23 @@
             this.timeInQueue.Name = "timeInQueue";
             this.timeInQueue.Width = 150;
             // 
-            // button2
+            // button3
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1262, 28);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(164, 120);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Back";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(760, 557);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(224, 23);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Average Waiting Time: ";
-            // 
-            // outputGridView2
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.outputGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.outputGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.outputGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.idleProb,
-            this.avgServiceTime,
-            this.utiliz});
-            this.outputGridView2.Location = new System.Drawing.Point(3, 518);
-            this.outputGridView2.Name = "outputGridView2";
-            this.outputGridView2.Size = new System.Drawing.Size(725, 241);
-            this.outputGridView2.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(760, 617);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(194, 23);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Max Queue Length: ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(760, 676);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(195, 23);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Waiting Probability: ";
-            // 
-            // avgWaitTime
-            // 
-            this.avgWaitTime.AutoSize = true;
-            this.avgWaitTime.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avgWaitTime.Location = new System.Drawing.Point(1013, 559);
-            this.avgWaitTime.Name = "avgWaitTime";
-            this.avgWaitTime.Size = new System.Drawing.Size(0, 21);
-            this.avgWaitTime.TabIndex = 4;
-            // 
-            // waitingProb
-            // 
-            this.waitingProb.AutoSize = true;
-            this.waitingProb.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.waitingProb.Location = new System.Drawing.Point(1013, 678);
-            this.waitingProb.Name = "waitingProb";
-            this.waitingProb.Size = new System.Drawing.Size(0, 21);
-            this.waitingProb.TabIndex = 4;
-            // 
-            // maxQueueLength
-            // 
-            this.maxQueueLength.AutoSize = true;
-            this.maxQueueLength.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maxQueueLength.Location = new System.Drawing.Point(1013, 619);
-            this.maxQueueLength.Name = "maxQueueLength";
-            this.maxQueueLength.Size = new System.Drawing.Size(0, 21);
-            this.maxQueueLength.TabIndex = 4;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            // 
-            // idleProb
-            // 
-            this.idleProb.HeaderText = "Idle Probability";
-            this.idleProb.Name = "idleProb";
-            this.idleProb.Width = 200;
-            // 
-            // avgServiceTime
-            // 
-            this.avgServiceTime.HeaderText = "Average Service Time";
-            this.avgServiceTime.Name = "avgServiceTime";
-            this.avgServiceTime.Width = 250;
-            // 
-            // utiliz
-            // 
-            this.utiliz.HeaderText = "Utilization";
-            this.utiliz.Name = "utiliz";
-            this.utiliz.Width = 130;
+            this.button3.BackColor = System.Drawing.Color.Silver;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(681, 12);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(344, 135);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Import file";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // Form1
             // 
@@ -405,6 +424,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.stopNum);
             this.Controls.Add(this.inputGridView);
+            this.Controls.Add(this.button3);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -412,8 +432,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.inputGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.outputGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outputGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,6 +474,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idleProb;
         private System.Windows.Forms.DataGridViewTextBoxColumn avgServiceTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn utiliz;
+        private System.Windows.Forms.Button button3;
     }
 }
 

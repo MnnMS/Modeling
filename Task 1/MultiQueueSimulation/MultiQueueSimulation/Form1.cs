@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MultiQueueModels;
 using MultiQueueTesting;
 using MultiQueueSimulation;
+using System.IO;
 
 namespace MultiQueueSimulation
 {
@@ -30,6 +31,7 @@ namespace MultiQueueSimulation
             SystemHelper.nCustomers_WaitedInQueue = 0;
             SystemHelper.Simulation_runTime = 0;
             SystemHelper.mx_QueueLength = 0;
+            SystemHelper.queue = new Dictionary<int, int>();
         }
 
         private void numOfServers_TextChanged(object sender, EventArgs e)
@@ -124,10 +126,94 @@ namespace MultiQueueSimulation
             
             string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
             MessageBox.Show(result);
+            showTable();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            system = new SimulationSystem();
+            SystemHelper.TotalTime_CusWaitedinQueue = 0;
+            SystemHelper.nCustomers_WaitedInQueue = 0;
+            SystemHelper.Simulation_runTime = 0;
+            SystemHelper.mx_QueueLength = 0;
+            SystemHelper.queue = new Dictionary<int, int>();
+            SystemHelper.nCustomers_Total = 0;
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter =
+               "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            dialog.Title = "Select a text file";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string[] lines = File.ReadAllLines(dialog.FileName);
+                    system.NumberOfServers = Convert.ToInt32(lines[1]);
+                    system.initSevers();
+                    system.StoppingNumber = Convert.ToInt32(lines[4]);
+                    system.StoppingCriteria = (Enums.StoppingCriteria)Convert.ToInt32(lines[7]);
+                    system.SelectionMethod = (Enums.SelectionMethod)Convert.ToInt32(lines[10]);
+                    int currentLine = 13;
+                    while (lines[currentLine] != "")
+                    {
+                        string[] separator = { ", " };
+                        string[] values = lines[currentLine].Split(separator, 2, StringSplitOptions.RemoveEmptyEntries);
+                        TimeDistribution timeDistribution = new TimeDistribution();
+                        timeDistribution.Time = Convert.ToInt32(values[0]);
+                        timeDistribution.Probability = Convert.ToDecimal(values[1]);
+                        system.InterarrivalDistribution.Add(timeDistribution);
+                        currentLine++;
+                    }
+
+                    for (int j = 0; j < system.NumberOfServers; j++)
+                    {
+                        currentLine += 2;
+                        while (currentLine < lines.Length && lines[currentLine] != "")
+                        {
+                            string[] separator = { ", " };
+                            string[] values = lines[currentLine].Split(separator, 2, StringSplitOptions.RemoveEmptyEntries);
+                            TimeDistribution timeDistribution = new TimeDistribution();
+                            timeDistribution.Time = Convert.ToInt32(values[0]);
+                            timeDistribution.Probability = Convert.ToDecimal(values[1]);
+                            system.Servers[j].TimeDistribution.Add(timeDistribution);
+                            currentLine++;
+                        }
+                    }
+
+                    system.InterarrivalDistribution = TimeDistribution.Get_DistributionTable(system.InterarrivalDistribution);
+                    for (int i = 0; i < system.NumberOfServers; i++)
+                    {
+                        system.Servers[i].TimeDistribution = TimeDistribution.Get_DistributionTable(system.Servers[i].TimeDistribution);
+                    }
+                    panel1.Visible = true;
+                    system.genTable();
+                    system.calc_performance();
+                    system.PerformanceMeasures.Calc_AverageWaitingTime(SystemHelper.TotalTime_CusWaitedinQueue, SystemHelper.nCustomers_Total);
+                    system.PerformanceMeasures.Calc_WaitingProbability(SystemHelper.nCustomers_WaitedInQueue, SystemHelper.nCustomers_Total);
+                    system.PerformanceMeasures.MaxQueueLength = SystemHelper.mx_QueueLength;
+
+                    string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
+                    MessageBox.Show(result);
+                    showTable();
+                }
+                catch
+                {
+                    MessageBox.Show("You have selected a worng file!");
+                }
+            }
+        }
+
+        private void showTable()
+        {
             int custNo = SystemHelper.nCustomers_Total;
             outputGridView.Rows.Add(custNo);
             for (int i = 0; i < custNo; i++)
-            {                
+            {
                 outputGridView.Rows[i].Cells[0].Value = system.SimulationTable[i].CustomerNumber;
                 outputGridView.Rows[i].Cells[1].Value = system.SimulationTable[i].RandomInterArrival;
                 outputGridView.Rows[i].Cells[2].Value = system.SimulationTable[i].InterArrival;
@@ -144,20 +230,15 @@ namespace MultiQueueSimulation
             waitingProb.Text = system.PerformanceMeasures.WaitingProbability.ToString();
 
             int serverCount = system.Servers.Count;
-            outputGridView2.Rows.Add(custNo);
+            outputGridView2.Rows.Add(serverCount);
             for (int i = 0; i < serverCount; i++)
             {
-                
-                outputGridView2.Rows[i].Cells[0].Value = system.Servers[i].ID;
-                outputGridView2.Rows[i].Cells[1].Value = Math.Round(system.Servers[i].IdleProbability,2);
-                outputGridView2.Rows[i].Cells[2].Value = Math.Round(system.Servers[i].AverageServiceTime,2);
-                outputGridView2.Rows[i].Cells[3].Value = Math.Round(system.Servers[i].Utilization,2);
-            }
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            panel1.Visible = false;
+                outputGridView2.Rows[i].Cells[0].Value = system.Servers[i].ID;
+                outputGridView2.Rows[i].Cells[1].Value = Math.Round(system.Servers[i].IdleProbability, 2);
+                outputGridView2.Rows[i].Cells[2].Value = Math.Round(system.Servers[i].AverageServiceTime, 2);
+                outputGridView2.Rows[i].Cells[3].Value = Math.Round(system.Servers[i].Utilization, 2);
+            }
         }
     }
 }

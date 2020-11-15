@@ -48,7 +48,7 @@ namespace MultiQueueModels
         public void genTable()
         {
             Random rnd = new Random();
-            for (int i = 0; i < StoppingNumber; i++)
+            for (int i = 0; (i < StoppingNumber && (int)StoppingCriteria == 1) || (SystemHelper.Simulation_runTime < StoppingNumber && (int)StoppingCriteria == 2); i++)
             {
                 SimulationCase prevRow = new SimulationCase();
                 if (i > 0)
