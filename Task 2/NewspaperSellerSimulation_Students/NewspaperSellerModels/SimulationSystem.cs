@@ -34,10 +34,11 @@ namespace NewspaperSellerModels
 
         public void fillTable()
         {
-            SimulationCase simulationCase = new SimulationCase();
+            SimulationCase simulationCase;
             Random random = new Random();
             for (int i = 1; i <= NumOfRecords; i++)
             {
+                simulationCase = new SimulationCase();
                 simulationCase.DayNo = i;
                 simulationCase.RandomNewsDayType = random.Next(1, 100);
                 simulationCase.NewsDayType = getDayType(simulationCase.RandomNewsDayType);
@@ -45,7 +46,7 @@ namespace NewspaperSellerModels
                 simulationCase.Demand = getDemand(simulationCase.RandomDemand, simulationCase.NewsDayType);
                 simulationCase.DailyCost = NumOfNewspapers * PurchasePrice;
                 simulationCase.SalesProfit = NumOfNewspapers >= simulationCase.Demand ? simulationCase.Demand * SellingPrice : NumOfNewspapers * SellingPrice;
-                simulationCase.LostProfit = NumOfNewspapers < simulationCase.Demand ? (simulationCase.Demand - NumOfNewspapers) * SellingPrice : 0;
+                simulationCase.LostProfit = NumOfNewspapers < simulationCase.Demand ? (simulationCase.Demand - NumOfNewspapers) * (SellingPrice-PurchasePrice) : 0;
                 simulationCase.ScrapProfit = NumOfNewspapers > simulationCase.Demand ? (NumOfNewspapers - simulationCase.Demand) * ScrapPrice : 0;
                 simulationCase.DailyNetProfit = (simulationCase.SalesProfit + simulationCase.ScrapProfit) - simulationCase.LostProfit - simulationCase.DailyCost;
 
