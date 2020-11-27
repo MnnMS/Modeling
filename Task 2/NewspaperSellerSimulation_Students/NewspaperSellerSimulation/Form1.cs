@@ -96,7 +96,7 @@ namespace NewspaperSellerSimulation
             system.DemandDistributions = SystemHelper.Cal_DemandDistribution(system.DemandDistributions);
             system.fillTable();
 
-            string result = TestingManager.Test(system, Constants.FileNames.TestCase2);
+            string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
             MessageBox.Show(result);
 
             int RowNum = system.NumOfRecords;

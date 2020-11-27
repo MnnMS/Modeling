@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace NewspaperSellerModels
 {
-<<<<<<< HEAD
     public static class SystemHelper
     {
         public static List<DayTypeDistribution> Cal_DayDistribution(List<DayTypeDistribution> dayTypeDistributionTable)
@@ -36,7 +35,7 @@ namespace NewspaperSellerModels
             demandDistributionTable[0].DayTypeDistributions[2].MaxRange = (int)(demandDistributionTable[0].DayTypeDistributions[2].CummProbability * 100);
             for (int i = 1; i < demandDistributionTable.Count; i++)
             {
-                demandDistributionTable[i].DayTypeDistributions[0].CummProbability = demandDistributionTable[i].DayTypeDistributions[0].Probability + demandDistributionTable[i-1].DayTypeDistributions[0].CummProbability;
+                demandDistributionTable[i].DayTypeDistributions[0].CummProbability = demandDistributionTable[i].DayTypeDistributions[0].Probability + demandDistributionTable[i - 1].DayTypeDistributions[0].CummProbability;
                 demandDistributionTable[i].DayTypeDistributions[0].MinRange = (demandDistributionTable[i - 1].DayTypeDistributions[0].MaxRange) + 1;
                 demandDistributionTable[i].DayTypeDistributions[0].MaxRange = (int)(demandDistributionTable[i].DayTypeDistributions[0].CummProbability * 100);
                 demandDistributionTable[i].DayTypeDistributions[1].CummProbability = demandDistributionTable[i].DayTypeDistributions[1].Probability + demandDistributionTable[i - 1].DayTypeDistributions[1].CummProbability;
@@ -47,9 +46,7 @@ namespace NewspaperSellerModels
                 demandDistributionTable[i].DayTypeDistributions[2].MaxRange = (int)(demandDistributionTable[i].DayTypeDistributions[2].CummProbability * 100);
             }
             return demandDistributionTable;
-=======
-    public class SystemHelper
-    {
+        }
         public static List<DayTypeDistribution> Get_probTable(List<DayTypeDistribution> Table)
         {
             Table[0].CummProbability = Table[0].Probability;
@@ -63,7 +60,9 @@ namespace NewspaperSellerModels
                 Table[i].MaxRange = (int)(Table[i].CummProbability * 100);
             }
             return Table;
->>>>>>> origin/PART-A
+
         }
+
     }
 }
+

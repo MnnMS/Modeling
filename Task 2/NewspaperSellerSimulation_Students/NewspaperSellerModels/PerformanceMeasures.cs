@@ -8,6 +8,16 @@ namespace NewspaperSellerModels
 {
     public class PerformanceMeasures
     {
+        public PerformanceMeasures()
+        {
+            TotalCost = 0;
+            TotalSalesProfit = 0;
+            TotalLostProfit = 0;
+            TotalScrapProfit = 0;
+            TotalNetProfit = 0;
+            DaysWithMoreDemand = 0;
+            DaysWithUnsoldPapers = 0;
+        }
         public decimal TotalSalesProfit { get; set; }
         public decimal TotalCost { get; set; }
         public decimal TotalLostProfit { get; set; }
