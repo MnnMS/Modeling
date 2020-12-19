@@ -78,6 +78,16 @@
             this.totalDownCTxt2 = new System.Windows.Forms.TextBox();
             this.totalDelayCTxt2 = new System.Windows.Forms.TextBox();
             this.totalBearCTxt2 = new System.Windows.Forms.TextBox();
+            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RD_BearingLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BearingLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accBearingLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RD_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curr_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstFailure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prop_accBearingLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prop_RD_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prop_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bearingDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.delayDist)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -364,6 +374,13 @@
             // currGridView
             // 
             this.currGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.currGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Index,
+            this.RD_BearingLife,
+            this.BearingLife,
+            this.accBearingLife,
+            this.RD_DelayTime,
+            this.curr_DelayTime});
             this.currGridView.Location = new System.Drawing.Point(3, 6);
             this.currGridView.Name = "currGridView";
             this.currGridView.Size = new System.Drawing.Size(1010, 348);
@@ -391,6 +408,11 @@
             // propGridView
             // 
             this.propGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.propGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.firstFailure,
+            this.prop_accBearingLife,
+            this.prop_RD_DelayTime,
+            this.prop_DelayTime});
             this.propGridView.Location = new System.Drawing.Point(3, 6);
             this.propGridView.Name = "propGridView";
             this.propGridView.Size = new System.Drawing.Size(1010, 348);
@@ -605,6 +627,66 @@
             this.totalBearCTxt2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.totalBearCTxt2.WordWrap = false;
             // 
+            // Index
+            // 
+            this.Index.HeaderText = "Index";
+            this.Index.Name = "Index";
+            this.Index.ReadOnly = true;
+            // 
+            // RD_BearingLife
+            // 
+            this.RD_BearingLife.HeaderText = "RD_BearingLife";
+            this.RD_BearingLife.Name = "RD_BearingLife";
+            this.RD_BearingLife.ReadOnly = true;
+            // 
+            // BearingLife
+            // 
+            this.BearingLife.HeaderText = "BearingLife";
+            this.BearingLife.Name = "BearingLife";
+            this.BearingLife.ReadOnly = true;
+            // 
+            // accBearingLife
+            // 
+            this.accBearingLife.HeaderText = "AccBearingLife";
+            this.accBearingLife.Name = "accBearingLife";
+            this.accBearingLife.ReadOnly = true;
+            // 
+            // RD_DelayTime
+            // 
+            this.RD_DelayTime.HeaderText = "RD_DelayTime";
+            this.RD_DelayTime.Name = "RD_DelayTime";
+            this.RD_DelayTime.ReadOnly = true;
+            // 
+            // curr_DelayTime
+            // 
+            this.curr_DelayTime.HeaderText = "DelayTime";
+            this.curr_DelayTime.Name = "curr_DelayTime";
+            this.curr_DelayTime.ReadOnly = true;
+            // 
+            // firstFailure
+            // 
+            this.firstFailure.HeaderText = "FirstFailure";
+            this.firstFailure.Name = "firstFailure";
+            this.firstFailure.ReadOnly = true;
+            // 
+            // prop_accBearingLife
+            // 
+            this.prop_accBearingLife.HeaderText = "AccBearingLife";
+            this.prop_accBearingLife.Name = "prop_accBearingLife";
+            this.prop_accBearingLife.ReadOnly = true;
+            // 
+            // prop_RD_DelayTime
+            // 
+            this.prop_RD_DelayTime.HeaderText = "RD_DelayTime";
+            this.prop_RD_DelayTime.Name = "prop_RD_DelayTime";
+            this.prop_RD_DelayTime.ReadOnly = true;
+            // 
+            // prop_DelayTime
+            // 
+            this.prop_DelayTime.HeaderText = "DelayTime";
+            this.prop_DelayTime.Name = "prop_DelayTime";
+            this.prop_DelayTime.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -699,5 +781,15 @@
         private System.Windows.Forms.Label curDowntime;
         private System.Windows.Forms.Label curDelay;
         private System.Windows.Forms.Label curBearing;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RD_BearingLife;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BearingLife;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accBearingLife;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RD_DelayTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curr_DelayTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstFailure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prop_accBearingLife;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prop_RD_DelayTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prop_DelayTime;
     }
 }

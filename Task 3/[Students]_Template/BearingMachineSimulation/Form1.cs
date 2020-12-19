@@ -108,7 +108,8 @@ namespace BearingMachineSimulation
                     td.CummProbability = cumultiveProb;
                     system.DelayTimeDistribution.Add(td);
                 }
-
+                for(int i = 0; i < system.NumberOfBearings; i++)
+                    propGridView.Columns.Add("Bearing " + (i + 1).ToString() + " Life", "Bearing " + (i + 1).ToString() + " Life");
             }
             catch
             {
@@ -119,7 +120,10 @@ namespace BearingMachineSimulation
 
         private void simBtn_Click(object sender, EventArgs e)
         {
-
+            //genFirst Table
+            //genSecond Table
+            //performance
+            //test
         }
     }
 }
