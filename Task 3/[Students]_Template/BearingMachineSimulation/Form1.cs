@@ -108,7 +108,8 @@ namespace BearingMachineSimulation
                     td.CummProbability = cumultiveProb;
                     system.DelayTimeDistribution.Add(td);
                 }
-
+                for(int i = 0; i < system.NumberOfBearings; i++)
+                    propGridView.Columns.Add("Bearing " + (i + 1).ToString() + " Life", "Bearing " + (i + 1).ToString() + " Life");
             }
             catch
             {
@@ -119,7 +120,16 @@ namespace BearingMachineSimulation
 
         private void simBtn_Click(object sender, EventArgs e)
         {
+            //genFirst Table
+            //genSecond Table
 
+            //performance
+            /*system.CurrentPerformanceMeasures.calcPerformance(system, system.RepairTimeForOneBearing);
+            system.ProposedPerformanceMeasures.calcPerformance(system, system.RepairTimeForAllBearings);*/
+
+            //test
+            /*string testingResult = TestingManager.Test(system, Constants.FileNames.TestCase1);
+            MessageBox.Show(testingResult);*/
         }
     }
 }
