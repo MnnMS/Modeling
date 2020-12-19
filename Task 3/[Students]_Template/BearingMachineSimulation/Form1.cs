@@ -125,8 +125,8 @@ namespace BearingMachineSimulation
             //genSecond Table
 
             //performance
-            /*system.CurrentPerformanceMeasures.calcPerformance(system, system.RepairTimeForOneBearing);
-            system.ProposedPerformanceMeasures.calcPerformance(system, system.RepairTimeForAllBearings);*/
+            system.CurrentPerformanceMeasures.calcPerformance(system, system.RepairTimeForOneBearing);
+            system.ProposedPerformanceMeasures.calcPerformance(system, system.RepairTimeForAllBearings);
 
             //test
             /*string testingResult = TestingManager.Test(system, Constants.FileNames.TestCase1);

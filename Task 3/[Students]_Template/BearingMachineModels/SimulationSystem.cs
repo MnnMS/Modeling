@@ -64,12 +64,15 @@ namespace BearingMachineModels
                     Current_SC.AccumulatedHours = (j == 0 ? Current_SC.Bearing.Hours : prevRow.AccumulatedHours + Current_SC.Bearing.Hours);
                     Current_SC.RandomDelay = random.Next(1, 100);
                     Current_SC.Delay = get_delay(Current_SC.RandomDelay);
+                    SystemHelper.totalDelayOfBearings += Current_SC.Delay;
 
                     CurrentSimulationTable.Add(Current_SC);
                     j++;
-                }
-            }
 
+                }
+                SystemHelper.totalNoChangedBearings += (j - 1);
+            }
+                   
         }
 
 
