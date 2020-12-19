@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,5 +38,62 @@ namespace BearingMachineModels
         public PerformanceMeasures CurrentPerformanceMeasures { get; set; }
         public List<ProposedSimulationCase> ProposedSimulationTable { get; set; }
         public PerformanceMeasures ProposedPerformanceMeasures { get; set; }
+
+
+
+
+        public void fill_currentSimulationTable ()
+        {
+            CurrentSimulationCase Current_SC ;
+            Random random = new Random();
+            for (int i = 1; i <= NumberOfBearings; i++)
+            {
+                int j = 0;
+                CurrentSimulationCase prevRow = new CurrentSimulationCase();
+                
+                while (prevRow.AccumulatedHours <= NumberOfHours)
+                {
+                    if (j > 0)
+                    {
+                        prevRow = CurrentSimulationTable[j - 1];
+                    }
+                    Current_SC = new CurrentSimulationCase();
+                    Current_SC.Bearing.Index = i;
+                    Current_SC.Bearing.RandomHours = random.Next(1, 100);
+                    Current_SC.Bearing.Hours = get_BearingLife(Current_SC.Bearing.RandomHours);
+                    Current_SC.AccumulatedHours = (j == 0 ? Current_SC.Bearing.Hours : prevRow.AccumulatedHours + Current_SC.Bearing.Hours);
+                    Current_SC.RandomDelay = random.Next(1, 100);
+                    Current_SC.Delay = get_delay(Current_SC.RandomDelay);
+
+                    CurrentSimulationTable.Add(Current_SC);
+                    j++;
+                }
+            }
+        }
+
+
+        public int get_BearingLife (int random)
+        {
+            for (int i = 0;  i < BearingLifeDistribution.Count; i++)
+            {
+                if (random >= BearingLifeDistribution[i].MinRange && random <= BearingLifeDistribution[i].MaxRange)
+                {
+                    return BearingLifeDistribution[i].Time;
+                }
+            }
+            throw new Exception("Can't find Life Hours");
+        }
+
+        public int get_delay (int random)
+        {
+            for (int i = 0; i < DelayTimeDistribution.Count; i++)
+            {
+                if (random >= DelayTimeDistribution[i].MinRange && random <= DelayTimeDistribution[i].MaxRange)
+                {
+                    return DelayTimeDistribution[i].Time;
+                }
+            }
+            throw new Exception("Can't find Delay Time");
+        }
     }
 }
