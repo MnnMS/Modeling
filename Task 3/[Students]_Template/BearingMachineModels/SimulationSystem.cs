@@ -69,6 +69,7 @@ namespace BearingMachineModels
                     j++;
                 }
             }
+
         }
 
 

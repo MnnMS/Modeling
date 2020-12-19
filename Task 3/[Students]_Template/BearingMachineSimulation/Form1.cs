@@ -121,6 +121,7 @@ namespace BearingMachineSimulation
         private void simBtn_Click(object sender, EventArgs e)
         {
             //genFirst Table
+            system.fill_currentSimulationTable();
             //genSecond Table
 
             //performance
