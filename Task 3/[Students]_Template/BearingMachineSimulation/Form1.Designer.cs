@@ -44,59 +44,59 @@
             this.repairTBrsTxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.bearingDist = new System.Windows.Forms.DataGridView();
+            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Probability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delayDist = new System.Windows.Forms.DataGridView();
             this.DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DTProb = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Probability = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.simBtn = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.inputTab = new System.Windows.Forms.TabPage();
             this.currTab = new System.Windows.Forms.TabPage();
-            this.PorpTab = new System.Windows.Forms.TabPage();
-            this.perfTab = new System.Windows.Forms.TabPage();
-            this.currGridView = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
             this.totalDelayTxt = new System.Windows.Forms.TextBox();
-            this.propGridView = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.currGridView = new System.Windows.Forms.DataGridView();
+            this.PorpTab = new System.Windows.Forms.TabPage();
             this.totalDelay2Txt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.curBearing = new System.Windows.Forms.Label();
-            this.curCost = new System.Windows.Forms.Label();
-            this.curRepair = new System.Windows.Forms.Label();
-            this.curDowntime = new System.Windows.Forms.Label();
-            this.curDelay = new System.Windows.Forms.Label();
-            this.totalBearCTxt = new System.Windows.Forms.TextBox();
-            this.totalDelayCTxt = new System.Windows.Forms.TextBox();
-            this.totalDownCTxt = new System.Windows.Forms.TextBox();
-            this.totalRepairCTxt = new System.Windows.Forms.TextBox();
-            this.totalCostTxt = new System.Windows.Forms.TextBox();
+            this.propGridView = new System.Windows.Forms.DataGridView();
+            this.firstFailure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prop_accBearingLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prop_RD_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prop_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perfTab = new System.Windows.Forms.TabPage();
             this.totalCostTxt2 = new System.Windows.Forms.TextBox();
             this.totalRepairCTxt2 = new System.Windows.Forms.TextBox();
             this.totalDownCTxt2 = new System.Windows.Forms.TextBox();
             this.totalDelayCTxt2 = new System.Windows.Forms.TextBox();
             this.totalBearCTxt2 = new System.Windows.Forms.TextBox();
+            this.totalCostTxt = new System.Windows.Forms.TextBox();
+            this.totalRepairCTxt = new System.Windows.Forms.TextBox();
+            this.totalDownCTxt = new System.Windows.Forms.TextBox();
+            this.totalDelayCTxt = new System.Windows.Forms.TextBox();
+            this.totalBearCTxt = new System.Windows.Forms.TextBox();
+            this.curCost = new System.Windows.Forms.Label();
+            this.curRepair = new System.Windows.Forms.Label();
+            this.curDowntime = new System.Windows.Forms.Label();
+            this.curDelay = new System.Windows.Forms.Label();
+            this.curBearing = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RD_BearingLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BearingLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accBearingLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RD_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.curr_RD_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.curr_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstFailure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prop_accBearingLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prop_RD_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prop_DelayTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bearingDist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.delayDist)).BeginInit();
             this.tabControl.SuspendLayout();
             this.inputTab.SuspendLayout();
             this.currTab.SuspendLayout();
-            this.PorpTab.SuspendLayout();
-            this.perfTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currGridView)).BeginInit();
+            this.PorpTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.propGridView)).BeginInit();
+            this.perfTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // readBtn
@@ -247,6 +247,18 @@
             this.bearingDist.Size = new System.Drawing.Size(489, 376);
             this.bearingDist.TabIndex = 17;
             // 
+            // Time
+            // 
+            this.Time.HeaderText = "BearingLife";
+            this.Time.Name = "Time";
+            this.Time.ReadOnly = true;
+            // 
+            // Probability
+            // 
+            this.Probability.HeaderText = "Probability";
+            this.Probability.Name = "Probability";
+            this.Probability.ReadOnly = true;
+            // 
             // delayDist
             // 
             this.delayDist.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -269,18 +281,6 @@
             this.DTProb.HeaderText = "Probability";
             this.DTProb.Name = "DTProb";
             this.DTProb.ReadOnly = true;
-            // 
-            // Time
-            // 
-            this.Time.HeaderText = "BearingLife";
-            this.Time.Name = "Time";
-            this.Time.ReadOnly = true;
-            // 
-            // Probability
-            // 
-            this.Probability.HeaderText = "Probability";
-            this.Probability.Name = "Probability";
-            this.Probability.ReadOnly = true;
             // 
             // simBtn
             // 
@@ -331,6 +331,40 @@
             this.currTab.Text = "Current Method";
             this.currTab.UseVisualStyleBackColor = true;
             // 
+            // totalDelayTxt
+            // 
+            this.totalDelayTxt.Location = new System.Drawing.Point(882, 360);
+            this.totalDelayTxt.Name = "totalDelayTxt";
+            this.totalDelayTxt.ReadOnly = true;
+            this.totalDelayTxt.Size = new System.Drawing.Size(131, 20);
+            this.totalDelayTxt.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(752, 357);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(124, 25);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Total Delay";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // currGridView
+            // 
+            this.currGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.currGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Index,
+            this.RD_BearingLife,
+            this.BearingLife,
+            this.accBearingLife,
+            this.curr_RD_DelayTime,
+            this.curr_DelayTime});
+            this.currGridView.Location = new System.Drawing.Point(3, 6);
+            this.currGridView.Name = "currGridView";
+            this.currGridView.Size = new System.Drawing.Size(1010, 348);
+            this.currGridView.TabIndex = 0;
+            // 
             // PorpTab
             // 
             this.PorpTab.Controls.Add(this.totalDelay2Txt);
@@ -343,6 +377,62 @@
             this.PorpTab.TabIndex = 2;
             this.PorpTab.Text = "Proposed Method ";
             this.PorpTab.UseVisualStyleBackColor = true;
+            // 
+            // totalDelay2Txt
+            // 
+            this.totalDelay2Txt.Location = new System.Drawing.Point(882, 360);
+            this.totalDelay2Txt.Name = "totalDelay2Txt";
+            this.totalDelay2Txt.ReadOnly = true;
+            this.totalDelay2Txt.Size = new System.Drawing.Size(131, 20);
+            this.totalDelay2Txt.TabIndex = 15;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(752, 357);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(124, 25);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Total Delay";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // propGridView
+            // 
+            this.propGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.propGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.firstFailure,
+            this.prop_accBearingLife,
+            this.prop_RD_DelayTime,
+            this.prop_DelayTime});
+            this.propGridView.Location = new System.Drawing.Point(3, 6);
+            this.propGridView.Name = "propGridView";
+            this.propGridView.Size = new System.Drawing.Size(1010, 348);
+            this.propGridView.TabIndex = 1;
+            // 
+            // firstFailure
+            // 
+            this.firstFailure.HeaderText = "FirstFailure";
+            this.firstFailure.Name = "firstFailure";
+            this.firstFailure.ReadOnly = true;
+            // 
+            // prop_accBearingLife
+            // 
+            this.prop_accBearingLife.HeaderText = "AccBearingLife";
+            this.prop_accBearingLife.Name = "prop_accBearingLife";
+            this.prop_accBearingLife.ReadOnly = true;
+            // 
+            // prop_RD_DelayTime
+            // 
+            this.prop_RD_DelayTime.HeaderText = "RD_DelayTime";
+            this.prop_RD_DelayTime.Name = "prop_RD_DelayTime";
+            this.prop_RD_DelayTime.ReadOnly = true;
+            // 
+            // prop_DelayTime
+            // 
+            this.prop_DelayTime.HeaderText = "DelayTime";
+            this.prop_DelayTime.Name = "prop_DelayTime";
+            this.prop_DelayTime.ReadOnly = true;
             // 
             // perfTab
             // 
@@ -370,207 +460,6 @@
             this.perfTab.TabIndex = 3;
             this.perfTab.Text = "Performance Measures";
             this.perfTab.UseVisualStyleBackColor = true;
-            // 
-            // currGridView
-            // 
-            this.currGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.currGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Index,
-            this.RD_BearingLife,
-            this.BearingLife,
-            this.accBearingLife,
-            this.RD_DelayTime,
-            this.curr_DelayTime});
-            this.currGridView.Location = new System.Drawing.Point(3, 6);
-            this.currGridView.Name = "currGridView";
-            this.currGridView.Size = new System.Drawing.Size(1010, 348);
-            this.currGridView.TabIndex = 0;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(752, 357);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(124, 25);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Total Delay";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // totalDelayTxt
-            // 
-            this.totalDelayTxt.Location = new System.Drawing.Point(882, 360);
-            this.totalDelayTxt.Name = "totalDelayTxt";
-            this.totalDelayTxt.ReadOnly = true;
-            this.totalDelayTxt.Size = new System.Drawing.Size(131, 20);
-            this.totalDelayTxt.TabIndex = 13;
-            // 
-            // propGridView
-            // 
-            this.propGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.propGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.firstFailure,
-            this.prop_accBearingLife,
-            this.prop_RD_DelayTime,
-            this.prop_DelayTime});
-            this.propGridView.Location = new System.Drawing.Point(3, 6);
-            this.propGridView.Name = "propGridView";
-            this.propGridView.Size = new System.Drawing.Size(1010, 348);
-            this.propGridView.TabIndex = 1;
-            // 
-            // totalDelay2Txt
-            // 
-            this.totalDelay2Txt.Location = new System.Drawing.Point(882, 360);
-            this.totalDelay2Txt.Name = "totalDelay2Txt";
-            this.totalDelay2Txt.ReadOnly = true;
-            this.totalDelay2Txt.Size = new System.Drawing.Size(131, 20);
-            this.totalDelay2Txt.TabIndex = 15;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(752, 357);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(124, 25);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Total Delay";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(487, 19);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(87, 25);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Current";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(804, 19);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 25);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Proposed";
-            // 
-            // curBearing
-            // 
-            this.curBearing.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.curBearing.ForeColor = System.Drawing.Color.Firebrick;
-            this.curBearing.Location = new System.Drawing.Point(58, 72);
-            this.curBearing.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.curBearing.Name = "curBearing";
-            this.curBearing.Size = new System.Drawing.Size(288, 28);
-            this.curBearing.TabIndex = 4;
-            this.curBearing.Text = "Total Bearing Cost";
-            this.curBearing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // curCost
-            // 
-            this.curCost.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.curCost.ForeColor = System.Drawing.Color.Firebrick;
-            this.curCost.Location = new System.Drawing.Point(58, 300);
-            this.curCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.curCost.Name = "curCost";
-            this.curCost.Size = new System.Drawing.Size(288, 28);
-            this.curCost.TabIndex = 5;
-            this.curCost.Text = "Total Cost";
-            this.curCost.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // curRepair
-            // 
-            this.curRepair.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.curRepair.ForeColor = System.Drawing.Color.Firebrick;
-            this.curRepair.Location = new System.Drawing.Point(56, 243);
-            this.curRepair.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.curRepair.Name = "curRepair";
-            this.curRepair.Size = new System.Drawing.Size(290, 28);
-            this.curRepair.TabIndex = 6;
-            this.curRepair.Text = "Total Repair Person Cost";
-            this.curRepair.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // curDowntime
-            // 
-            this.curDowntime.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.curDowntime.ForeColor = System.Drawing.Color.Firebrick;
-            this.curDowntime.Location = new System.Drawing.Point(56, 186);
-            this.curDowntime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.curDowntime.Name = "curDowntime";
-            this.curDowntime.Size = new System.Drawing.Size(290, 28);
-            this.curDowntime.TabIndex = 7;
-            this.curDowntime.Text = "Total Downtime Cost";
-            this.curDowntime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // curDelay
-            // 
-            this.curDelay.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.curDelay.ForeColor = System.Drawing.Color.Firebrick;
-            this.curDelay.Location = new System.Drawing.Point(58, 129);
-            this.curDelay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.curDelay.Name = "curDelay";
-            this.curDelay.Size = new System.Drawing.Size(288, 28);
-            this.curDelay.TabIndex = 8;
-            this.curDelay.Text = "Total Delay Cost";
-            this.curDelay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // totalBearCTxt
-            // 
-            this.totalBearCTxt.Location = new System.Drawing.Point(430, 72);
-            this.totalBearCTxt.Multiline = true;
-            this.totalBearCTxt.Name = "totalBearCTxt";
-            this.totalBearCTxt.ReadOnly = true;
-            this.totalBearCTxt.Size = new System.Drawing.Size(201, 28);
-            this.totalBearCTxt.TabIndex = 17;
-            this.totalBearCTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.totalBearCTxt.WordWrap = false;
-            // 
-            // totalDelayCTxt
-            // 
-            this.totalDelayCTxt.Location = new System.Drawing.Point(430, 129);
-            this.totalDelayCTxt.Multiline = true;
-            this.totalDelayCTxt.Name = "totalDelayCTxt";
-            this.totalDelayCTxt.ReadOnly = true;
-            this.totalDelayCTxt.Size = new System.Drawing.Size(201, 28);
-            this.totalDelayCTxt.TabIndex = 18;
-            this.totalDelayCTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.totalDelayCTxt.WordWrap = false;
-            // 
-            // totalDownCTxt
-            // 
-            this.totalDownCTxt.Location = new System.Drawing.Point(430, 186);
-            this.totalDownCTxt.Multiline = true;
-            this.totalDownCTxt.Name = "totalDownCTxt";
-            this.totalDownCTxt.ReadOnly = true;
-            this.totalDownCTxt.Size = new System.Drawing.Size(201, 28);
-            this.totalDownCTxt.TabIndex = 19;
-            this.totalDownCTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.totalDownCTxt.WordWrap = false;
-            // 
-            // totalRepairCTxt
-            // 
-            this.totalRepairCTxt.Location = new System.Drawing.Point(430, 243);
-            this.totalRepairCTxt.Multiline = true;
-            this.totalRepairCTxt.Name = "totalRepairCTxt";
-            this.totalRepairCTxt.ReadOnly = true;
-            this.totalRepairCTxt.Size = new System.Drawing.Size(201, 28);
-            this.totalRepairCTxt.TabIndex = 20;
-            this.totalRepairCTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.totalRepairCTxt.WordWrap = false;
-            // 
-            // totalCostTxt
-            // 
-            this.totalCostTxt.Location = new System.Drawing.Point(430, 300);
-            this.totalCostTxt.Multiline = true;
-            this.totalCostTxt.Name = "totalCostTxt";
-            this.totalCostTxt.ReadOnly = true;
-            this.totalCostTxt.Size = new System.Drawing.Size(201, 28);
-            this.totalCostTxt.TabIndex = 21;
-            this.totalCostTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.totalCostTxt.WordWrap = false;
             // 
             // totalCostTxt2
             // 
@@ -627,6 +516,141 @@
             this.totalBearCTxt2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.totalBearCTxt2.WordWrap = false;
             // 
+            // totalCostTxt
+            // 
+            this.totalCostTxt.Location = new System.Drawing.Point(430, 300);
+            this.totalCostTxt.Multiline = true;
+            this.totalCostTxt.Name = "totalCostTxt";
+            this.totalCostTxt.ReadOnly = true;
+            this.totalCostTxt.Size = new System.Drawing.Size(201, 28);
+            this.totalCostTxt.TabIndex = 21;
+            this.totalCostTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.totalCostTxt.WordWrap = false;
+            // 
+            // totalRepairCTxt
+            // 
+            this.totalRepairCTxt.Location = new System.Drawing.Point(430, 243);
+            this.totalRepairCTxt.Multiline = true;
+            this.totalRepairCTxt.Name = "totalRepairCTxt";
+            this.totalRepairCTxt.ReadOnly = true;
+            this.totalRepairCTxt.Size = new System.Drawing.Size(201, 28);
+            this.totalRepairCTxt.TabIndex = 20;
+            this.totalRepairCTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.totalRepairCTxt.WordWrap = false;
+            // 
+            // totalDownCTxt
+            // 
+            this.totalDownCTxt.Location = new System.Drawing.Point(430, 186);
+            this.totalDownCTxt.Multiline = true;
+            this.totalDownCTxt.Name = "totalDownCTxt";
+            this.totalDownCTxt.ReadOnly = true;
+            this.totalDownCTxt.Size = new System.Drawing.Size(201, 28);
+            this.totalDownCTxt.TabIndex = 19;
+            this.totalDownCTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.totalDownCTxt.WordWrap = false;
+            // 
+            // totalDelayCTxt
+            // 
+            this.totalDelayCTxt.Location = new System.Drawing.Point(430, 129);
+            this.totalDelayCTxt.Multiline = true;
+            this.totalDelayCTxt.Name = "totalDelayCTxt";
+            this.totalDelayCTxt.ReadOnly = true;
+            this.totalDelayCTxt.Size = new System.Drawing.Size(201, 28);
+            this.totalDelayCTxt.TabIndex = 18;
+            this.totalDelayCTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.totalDelayCTxt.WordWrap = false;
+            // 
+            // totalBearCTxt
+            // 
+            this.totalBearCTxt.Location = new System.Drawing.Point(430, 72);
+            this.totalBearCTxt.Multiline = true;
+            this.totalBearCTxt.Name = "totalBearCTxt";
+            this.totalBearCTxt.ReadOnly = true;
+            this.totalBearCTxt.Size = new System.Drawing.Size(201, 28);
+            this.totalBearCTxt.TabIndex = 17;
+            this.totalBearCTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.totalBearCTxt.WordWrap = false;
+            // 
+            // curCost
+            // 
+            this.curCost.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.curCost.ForeColor = System.Drawing.Color.Firebrick;
+            this.curCost.Location = new System.Drawing.Point(58, 300);
+            this.curCost.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.curCost.Name = "curCost";
+            this.curCost.Size = new System.Drawing.Size(288, 28);
+            this.curCost.TabIndex = 5;
+            this.curCost.Text = "Total Cost";
+            this.curCost.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // curRepair
+            // 
+            this.curRepair.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.curRepair.ForeColor = System.Drawing.Color.Firebrick;
+            this.curRepair.Location = new System.Drawing.Point(56, 243);
+            this.curRepair.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.curRepair.Name = "curRepair";
+            this.curRepair.Size = new System.Drawing.Size(290, 28);
+            this.curRepair.TabIndex = 6;
+            this.curRepair.Text = "Total Repair Person Cost";
+            this.curRepair.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // curDowntime
+            // 
+            this.curDowntime.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.curDowntime.ForeColor = System.Drawing.Color.Firebrick;
+            this.curDowntime.Location = new System.Drawing.Point(56, 186);
+            this.curDowntime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.curDowntime.Name = "curDowntime";
+            this.curDowntime.Size = new System.Drawing.Size(290, 28);
+            this.curDowntime.TabIndex = 7;
+            this.curDowntime.Text = "Total Downtime Cost";
+            this.curDowntime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // curDelay
+            // 
+            this.curDelay.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.curDelay.ForeColor = System.Drawing.Color.Firebrick;
+            this.curDelay.Location = new System.Drawing.Point(58, 129);
+            this.curDelay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.curDelay.Name = "curDelay";
+            this.curDelay.Size = new System.Drawing.Size(288, 28);
+            this.curDelay.TabIndex = 8;
+            this.curDelay.Text = "Total Delay Cost";
+            this.curDelay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // curBearing
+            // 
+            this.curBearing.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.curBearing.ForeColor = System.Drawing.Color.Firebrick;
+            this.curBearing.Location = new System.Drawing.Point(58, 72);
+            this.curBearing.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.curBearing.Name = "curBearing";
+            this.curBearing.Size = new System.Drawing.Size(288, 28);
+            this.curBearing.TabIndex = 4;
+            this.curBearing.Text = "Total Bearing Cost";
+            this.curBearing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(804, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(107, 25);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Proposed";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(487, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(87, 25);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Current";
+            // 
             // Index
             // 
             this.Index.HeaderText = "Index";
@@ -651,41 +675,17 @@
             this.accBearingLife.Name = "accBearingLife";
             this.accBearingLife.ReadOnly = true;
             // 
-            // RD_DelayTime
+            // curr_RD_DelayTime
             // 
-            this.RD_DelayTime.HeaderText = "RD_DelayTime";
-            this.RD_DelayTime.Name = "RD_DelayTime";
-            this.RD_DelayTime.ReadOnly = true;
+            this.curr_RD_DelayTime.HeaderText = "RD_DelayTime";
+            this.curr_RD_DelayTime.Name = "curr_RD_DelayTime";
+            this.curr_RD_DelayTime.ReadOnly = true;
             // 
             // curr_DelayTime
             // 
             this.curr_DelayTime.HeaderText = "DelayTime";
             this.curr_DelayTime.Name = "curr_DelayTime";
             this.curr_DelayTime.ReadOnly = true;
-            // 
-            // firstFailure
-            // 
-            this.firstFailure.HeaderText = "FirstFailure";
-            this.firstFailure.Name = "firstFailure";
-            this.firstFailure.ReadOnly = true;
-            // 
-            // prop_accBearingLife
-            // 
-            this.prop_accBearingLife.HeaderText = "AccBearingLife";
-            this.prop_accBearingLife.Name = "prop_accBearingLife";
-            this.prop_accBearingLife.ReadOnly = true;
-            // 
-            // prop_RD_DelayTime
-            // 
-            this.prop_RD_DelayTime.HeaderText = "RD_DelayTime";
-            this.prop_RD_DelayTime.Name = "prop_RD_DelayTime";
-            this.prop_RD_DelayTime.ReadOnly = true;
-            // 
-            // prop_DelayTime
-            // 
-            this.prop_DelayTime.HeaderText = "DelayTime";
-            this.prop_DelayTime.Name = "prop_DelayTime";
-            this.prop_DelayTime.ReadOnly = true;
             // 
             // Form1
             // 
@@ -718,12 +718,12 @@
             this.inputTab.ResumeLayout(false);
             this.currTab.ResumeLayout(false);
             this.currTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.currGridView)).EndInit();
             this.PorpTab.ResumeLayout(false);
             this.PorpTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.propGridView)).EndInit();
             this.perfTab.ResumeLayout(false);
             this.perfTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.currGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.propGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -781,15 +781,15 @@
         private System.Windows.Forms.Label curDowntime;
         private System.Windows.Forms.Label curDelay;
         private System.Windows.Forms.Label curBearing;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Index;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RD_BearingLife;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BearingLife;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accBearingLife;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RD_DelayTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn curr_DelayTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstFailure;
         private System.Windows.Forms.DataGridViewTextBoxColumn prop_accBearingLife;
         private System.Windows.Forms.DataGridViewTextBoxColumn prop_RD_DelayTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn prop_DelayTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RD_BearingLife;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BearingLife;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accBearingLife;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curr_RD_DelayTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn curr_DelayTime;
     }
 }

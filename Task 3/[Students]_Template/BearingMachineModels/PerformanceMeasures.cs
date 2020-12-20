@@ -24,7 +24,7 @@ namespace BearingMachineModels
             BearingCost = SystemHelper.totalNoChangedBearings * system.BearingCost;
             DelayCost = SystemHelper.totalDelayOfBearings * system.DowntimeCost;
             DowntimeCost = SystemHelper.totalNoChangedBearings * repairTime * system.DowntimeCost;
-            RepairPersonCost = SystemHelper.totalNoChangedBearings * repairTime * system.RepairPersonCost / 60;
+            RepairPersonCost = (decimal)(SystemHelper.totalNoChangedBearings * repairTime * system.RepairPersonCost) / 60;
             TotalCost = BearingCost + DelayCost + DowntimeCost + RepairPersonCost;
         }
     }

@@ -122,15 +122,41 @@ namespace BearingMachineSimulation
         {
             //genFirst Table
             system.fill_currentSimulationTable();
+
+            
             //genSecond Table
 
             //performance
             system.CurrentPerformanceMeasures.calcPerformance(system, system.RepairTimeForOneBearing);
-            system.ProposedPerformanceMeasures.calcPerformance(system, system.RepairTimeForAllBearings);
-
+            //system.ProposedPerformanceMeasures.calcPerformance(system, system.RepairTimeForAllBearings);
+            showTables();
             //test
-            /*string testingResult = TestingManager.Test(system, Constants.FileNames.TestCase1);
-            MessageBox.Show(testingResult);*/
+            
+        }
+        void showTables()
+        {
+            /*currGridView.DataSource = system.CurrentSimulationTable;
+            currGridView.Columns["Bearing"].Visible = false;*/
+            for (int i = 0; i < system.CurrentSimulationTable.Count; i++)
+            {
+                currGridView.Rows.Add();
+                CurrentSimulationCase sc = system.CurrentSimulationTable[i];
+                currGridView.Rows[i].Cells[0].Value = sc.Bearing.Index;
+                currGridView.Rows[i].Cells[1].Value = sc.Bearing.RandomHours;
+                currGridView.Rows[i].Cells[2].Value = sc.Bearing.Hours;
+                currGridView.Rows[i].Cells[3].Value = sc.AccumulatedHours;
+                currGridView.Rows[i].Cells[4].Value = sc.RandomDelay;
+                currGridView.Rows[i].Cells[5].Value = sc.Delay;
+            }
+            totalDelayTxt.Text = SystemHelper.totalDelayOfBearings.ToString();
+            totalBearCTxt.Text = system.CurrentPerformanceMeasures.BearingCost.ToString();
+            totalDelayCTxt.Text = system.CurrentPerformanceMeasures.DelayCost.ToString();
+            totalDownCTxt.Text = system.CurrentPerformanceMeasures.DowntimeCost.ToString();
+            totalRepairCTxt.Text = system.CurrentPerformanceMeasures.RepairPersonCost.ToString(); 
+            totalCostTxt.Text = system.CurrentPerformanceMeasures.TotalCost.ToString();
+
+            string testingResult = TestingManager.Test(system, Constants.FileNames.TestCase3);
+            MessageBox.Show(testingResult);
         }
     }
 }

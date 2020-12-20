@@ -44,19 +44,21 @@ namespace BearingMachineModels
 
         public void fill_currentSimulationTable ()
         {
-            CurrentSimulationCase Current_SC ;
-            Random random = new Random();
             for (int i = 1; i <= NumberOfBearings; i++)
             {
                 int j = 0;
+                Random random = new Random();
+                CurrentSimulationCase Current_SC;
                 CurrentSimulationCase prevRow = new CurrentSimulationCase();
                 
-                while (prevRow.AccumulatedHours <= NumberOfHours)
+                while (true)
                 {
                     if (j > 0)
                     {
                         prevRow = CurrentSimulationTable[j - 1];
                     }
+                    if (prevRow.AccumulatedHours >= NumberOfHours)
+                        break;
                     Current_SC = new CurrentSimulationCase();
                     Current_SC.Bearing.Index = i;
                     Current_SC.Bearing.RandomHours = random.Next(1, 100);
@@ -70,7 +72,7 @@ namespace BearingMachineModels
                     j++;
 
                 }
-                SystemHelper.totalNoChangedBearings += (j - 1);
+                SystemHelper.totalNoChangedBearings += j;
             }
                    
         }
