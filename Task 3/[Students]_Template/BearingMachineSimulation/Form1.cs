@@ -120,15 +120,12 @@ namespace BearingMachineSimulation
 
         private void simBtn_Click(object sender, EventArgs e)
         {
-            //genFirst Table
             system.fill_currentSimulationTable();
+            system.CurrentPerformanceMeasures.calcPerformance(system, system.RepairTimeForOneBearing, 1);
             system.fill_proposedSimulationTable();
-            
-            //genSecond Table
+            system.ProposedPerformanceMeasures.calcPerformance(system, system.RepairTimeForAllBearings, system.NumberOfBearings);
 
-            //performance
-            system.CurrentPerformanceMeasures.calcPerformance(system, system.RepairTimeForOneBearing,1);
-            system.ProposedPerformanceMeasures.calcPerformance(system, system.RepairTimeForAllBearings,system.NumberOfBearings);
+
             showTables();
             //test
             

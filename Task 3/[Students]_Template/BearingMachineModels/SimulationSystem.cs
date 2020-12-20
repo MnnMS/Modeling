@@ -52,19 +52,17 @@ namespace BearingMachineModels
             for (int i = 1; i <= NumberOfBearings; i++)
             {
                 int j = 0;
-                CurrentSimulationCase Current_SC;
-                CurrentSimulationCase prevRow = new CurrentSimulationCase();
                 int rowCount = 0;
                 while (true)
                 {
-                    prevRow = new CurrentSimulationCase();
-                    if (j > 0)
+                    CurrentSimulationCase prevRow = new CurrentSimulationCase();
+                    if (index > 0)
                     {
                         prevRow = CurrentSimulationTable[index - 1];
-                    }
-                    if (prevRow.AccumulatedHours >= NumberOfHours)
+                        if (prevRow.AccumulatedHours >= NumberOfHours && prevRow.Bearing.Index == i)
                         break;
-                    Current_SC = new CurrentSimulationCase();
+                    }
+                    CurrentSimulationCase Current_SC = new CurrentSimulationCase();
                     Current_SC.Bearing.Index = i;
                     Current_SC.Bearing.RandomHours = random.Next(1, 100);
                     Current_SC.Bearing.Hours = get_BearingLife(Current_SC.Bearing.RandomHours);
