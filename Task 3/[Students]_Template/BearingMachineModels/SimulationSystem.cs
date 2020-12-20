@@ -21,7 +21,9 @@ namespace BearingMachineModels
             ProposedSimulationTable = new List<ProposedSimulationCase>();
             ProposedPerformanceMeasures = new PerformanceMeasures();
         }
-        
+
+        private List<int> noOfAccumRows = new List<int>();
+        private List<int> noOfRows = new List<int>();
         ///////////// INPUTS /////////////
         public int DowntimeCost { get; set; }
         public int RepairPersonCost { get; set; }
@@ -44,18 +46,21 @@ namespace BearingMachineModels
 
         public void fill_currentSimulationTable ()
         {
+            int AccumRowCount = 0;
+            Random random = new Random();
+            int index = 0;
             for (int i = 1; i <= NumberOfBearings; i++)
             {
                 int j = 0;
-                Random random = new Random();
                 CurrentSimulationCase Current_SC;
                 CurrentSimulationCase prevRow = new CurrentSimulationCase();
-                
+                int rowCount = 0;
                 while (true)
                 {
+                    prevRow = new CurrentSimulationCase();
                     if (j > 0)
                     {
-                        prevRow = CurrentSimulationTable[j - 1];
+                        prevRow = CurrentSimulationTable[index - 1];
                     }
                     if (prevRow.AccumulatedHours >= NumberOfHours)
                         break;
@@ -70,13 +75,60 @@ namespace BearingMachineModels
 
                     CurrentSimulationTable.Add(Current_SC);
                     j++;
-
+                    index++;
+                    rowCount++;
+                    AccumRowCount++;
                 }
+                noOfAccumRows.Add(AccumRowCount);
+                noOfRows.Add(rowCount);
                 SystemHelper.totalNoChangedBearings += j;
             }
                    
         }
 
+        public void fill_proposedSimulationTable()
+        {
+            SystemHelper.totalDelayOfBearings = 0;         
+            int tableCount = CurrentSimulationTable.Count;
+            int accumHours = 0;
+            Random random = new Random();
+            int rowNum = 1;
+            while (accumHours<NumberOfHours)
+            {
+                ProposedSimulationCase psc = new ProposedSimulationCase();
+                
+                for (int i = 0; i < NumberOfBearings; i++)
+                {
+                    Bearing bearing = new Bearing();
+                    if (rowNum <= noOfRows[i])
+                    {
+                        int index = (i == 0 ? rowNum - 1 : noOfAccumRows[i - 1] + rowNum-1);
+                        bearing.Index = CurrentSimulationTable[index].Bearing.Index;
+                        bearing.Hours = CurrentSimulationTable[index].Bearing.Hours;
+                        bearing.RandomHours = CurrentSimulationTable[index].Bearing.RandomHours;                       
+                    }
+                    else
+                    {
+                        bearing.Index = i + 1;
+                        bearing.RandomHours = random.Next(1, 100);
+                        bearing.Hours = get_BearingLife(bearing.RandomHours);
+                    }
+                    psc.Bearings.Add(bearing);
+                }
+                psc.FirstFailure = getFirstFailure(psc.Bearings);
+                accumHours += psc.FirstFailure;
+                psc.AccumulatedHours = accumHours;
+                psc.RandomDelay = random.Next(1, 100);
+                psc.Delay = get_delay(psc.RandomDelay);
+                SystemHelper.totalDelayOfBearings += psc.Delay;
+                
+                ProposedSimulationTable.Add(psc);
+                rowNum++;
+            }
+            SystemHelper.totalNoChangedBearings = rowNum - 1;
+
+
+        }
 
         public int get_BearingLife (int random)
         {
@@ -100,6 +152,19 @@ namespace BearingMachineModels
                 }
             }
             throw new Exception("Can't find Delay Time");
+        }
+
+        private int getFirstFailure(List<Bearing> bearings)
+        {
+            int mini = int.MaxValue;
+            for (int i = 0; i < NumberOfBearings; i++)
+            {
+                if (bearings[i].Hours<=mini)
+                {
+                    mini = bearings[i].Hours;
+                }
+            }
+            return mini;
         }
     }
 }

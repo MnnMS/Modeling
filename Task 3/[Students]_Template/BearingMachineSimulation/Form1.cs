@@ -122,13 +122,13 @@ namespace BearingMachineSimulation
         {
             //genFirst Table
             system.fill_currentSimulationTable();
-
+            system.fill_proposedSimulationTable();
             
             //genSecond Table
 
             //performance
-            system.CurrentPerformanceMeasures.calcPerformance(system, system.RepairTimeForOneBearing);
-            //system.ProposedPerformanceMeasures.calcPerformance(system, system.RepairTimeForAllBearings);
+            system.CurrentPerformanceMeasures.calcPerformance(system, system.RepairTimeForOneBearing,1);
+            system.ProposedPerformanceMeasures.calcPerformance(system, system.RepairTimeForAllBearings,system.NumberOfBearings);
             showTables();
             //test
             
@@ -155,7 +155,34 @@ namespace BearingMachineSimulation
             totalRepairCTxt.Text = system.CurrentPerformanceMeasures.RepairPersonCost.ToString(); 
             totalCostTxt.Text = system.CurrentPerformanceMeasures.TotalCost.ToString();
 
-            string testingResult = TestingManager.Test(system, Constants.FileNames.TestCase3);
+
+            //for (int i = 0; i < system.NumberOfBearings; i++)
+            //{
+
+            //    propGridView.Columns.Add("Bearing "+ (i+1).ToString()+" Life","Bearing "+ (i+1).ToString()+" Life");
+            //}
+            for (int i = 0; i < system.ProposedSimulationTable.Count; i++)
+            {
+                propGridView.Rows.Add();               
+                ProposedSimulationCase sc = system.ProposedSimulationTable[i];                
+                propGridView.Rows[i].Cells[0].Value = sc.FirstFailure;
+                propGridView.Rows[i].Cells[1].Value = sc.AccumulatedHours;
+                propGridView.Rows[i].Cells[2].Value = sc.RandomDelay;
+                propGridView.Rows[i].Cells[3].Value = sc.Delay;
+                for (int a = 0; a < system.NumberOfBearings; a++)
+                {
+                    propGridView.Rows[i].Cells[a+4].Value = sc.Bearings[a].Hours;
+                }
+                
+            }
+            totalDelay2Txt.Text = SystemHelper.totalDelayOfBearings.ToString();
+            totalBearCTxt2.Text = system.ProposedPerformanceMeasures.BearingCost.ToString();
+            totalDelayCTxt2.Text = system.ProposedPerformanceMeasures.DelayCost.ToString();
+            totalDownCTxt2.Text = system.ProposedPerformanceMeasures.DowntimeCost.ToString();
+            totalRepairCTxt2.Text = system.ProposedPerformanceMeasures.RepairPersonCost.ToString();
+            totalCostTxt2.Text = system.ProposedPerformanceMeasures.TotalCost.ToString();
+
+            string testingResult = TestingManager.Test(system, Constants.FileNames.TestCase1);
             MessageBox.Show(testingResult);
         }
     }
