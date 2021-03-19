@@ -179,7 +179,7 @@ namespace BearingMachineSimulation
             totalRepairCTxt2.Text = system.ProposedPerformanceMeasures.RepairPersonCost.ToString();
             totalCostTxt2.Text = system.ProposedPerformanceMeasures.TotalCost.ToString();
 
-            string testingResult = TestingManager.Test(system, Constants.FileNames.TestCase1);
+            string testingResult = TestingManager.Test(system, Constants.FileNames.TestCase3);
             MessageBox.Show(testingResult);
         }
     }
