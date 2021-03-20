@@ -28,6 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Text = "Form1";
+        }
+
+        #endregion
+=======
             this.readBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.NhoursTxt = new System.Windows.Forms.TextBox();
@@ -791,5 +799,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn accBearingLife;
         private System.Windows.Forms.DataGridViewTextBoxColumn curr_RD_DelayTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn curr_DelayTime;
+>>>>>>> Test
     }
 }

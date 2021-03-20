@@ -47,7 +47,10 @@
     <Compile Include="ProposedSimulationCase.cs" />
     <Compile Include="SimulationSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="SystemHelper.cs" />
+>>>>>>> Test
     <Compile Include="TimeDistribution.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

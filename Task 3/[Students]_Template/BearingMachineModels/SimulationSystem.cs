@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
 using System.Data;
 using System.Dynamic;
+>>>>>>> Test
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +24,13 @@ namespace BearingMachineModels
             ProposedSimulationTable = new List<ProposedSimulationCase>();
             ProposedPerformanceMeasures = new PerformanceMeasures();
         }
+<<<<<<< HEAD
+        
+=======
 
         private List<int> noOfAccumRows = new List<int>();
         private List<int> noOfRows = new List<int>();
+>>>>>>> Test
         ///////////// INPUTS /////////////
         public int DowntimeCost { get; set; }
         public int RepairPersonCost { get; set; }
@@ -40,6 +47,8 @@ namespace BearingMachineModels
         public PerformanceMeasures CurrentPerformanceMeasures { get; set; }
         public List<ProposedSimulationCase> ProposedSimulationTable { get; set; }
         public PerformanceMeasures ProposedPerformanceMeasures { get; set; }
+<<<<<<< HEAD
+=======
 
 
 
@@ -164,5 +173,6 @@ namespace BearingMachineModels
             }
             return mini;
         }
+>>>>>>> Test
     }
 }

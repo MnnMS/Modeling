@@ -8,19 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BearingMachineTesting;
+<<<<<<< HEAD
+=======
 using System.IO;
 using BearingMachineModels;
+>>>>>>> Test
 
 namespace BearingMachineSimulation
 {
     public partial class Form1 : Form
     {
+<<<<<<< HEAD
+=======
         SimulationSystem system = new SimulationSystem();
 
+>>>>>>> Test
         public Form1()
         {
             InitializeComponent();
         }
+<<<<<<< HEAD
+=======
 
         private void readBtn_Click(object sender, EventArgs e)
         {
@@ -182,5 +190,6 @@ namespace BearingMachineSimulation
             string testingResult = TestingManager.Test(system, Constants.FileNames.TestCase3);
             MessageBox.Show(testingResult);
         }
+>>>>>>> Test
     }
 }

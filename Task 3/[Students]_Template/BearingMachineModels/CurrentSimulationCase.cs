@@ -10,8 +10,12 @@ namespace BearingMachineModels
     {
         public CurrentSimulationCase()
         {
+<<<<<<< HEAD
+
+=======
             Bearing = new Bearing();
             AccumulatedHours = 0;
+>>>>>>> Test
         }
         public Bearing Bearing { get; set; }
         public int AccumulatedHours { get; set; }
